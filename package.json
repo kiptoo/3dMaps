@@ -1,0 +1,14 @@
+{
+  "name": "kenyamaps",
+  "version": "1.0.0",
+  "description": "3d maps",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Evans Chirchir",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.13"
+  }
+}

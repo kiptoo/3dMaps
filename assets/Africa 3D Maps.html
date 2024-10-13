@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+
+		<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+
+		<title>Africa 3D Maps</title>
+
+		<meta property="og:title" content="Homepage | Atom Template" />
+
+		<meta property="og:locale" content="en_US" />
+
+		<link rel="canonical" href="//" />
+
+		<meta property="og:url" content="//" />
+
+		<meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+
+		<link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+
+		<meta name="theme-color" content="#5540af" />
+
+		<meta property="og:site_name" content="Atom Template" />
+
+		<meta property="og:image" content="//assets/img/social.jpg" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+
+		<meta name="twitter:site" content="@tailwindmade" />
+
+		<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+		<link href="https://cdn.tailwindcss.com" rel="stylesheet" />
+		<script defer src="https://cdn.jsdelivr.net/gh/alpine-collective/alpine-magic-helpers@1.2.x/dist/scroll.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	</head>
+
+	<body>
+		<!DOCTYPE html>
+		<html lang="en">
+			<head>
+				<meta charset="UTF-8" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<script src="https://cdn.tailwindcss.com"></script>
+				<title>Resposive Layout</title>
+			</head>
+			<body>
+				<div
+					class="w-full flex h-svh max-h-svh bg-gradient-to-br from-teal-200 via-zinc-200 to-stone-300"
+					x-data="{ open: false, toggle() { 
+          this.open = ! this.open 
+         
+         },
+         triggerNavItem(id) {
+        alert(id)
+            $scroll(id)
+        },
+        triggerMobileNavItem(id) {
+            mobileMenu = false;
+            this.triggerNavItem(id)
+        }
+        }"
+				>
+					<div class="flex h-full flex-1 flex-col">
+						<!-- Main Content Area-->
+
+						<div class="flex h-full flex-col justify-between overflow-hidden">
+							<div class="sticky top-0 w-full">
+								<!-- Header -->
+								<!-- Large screen Menu -->
+								<!-- <nav class="sticky flex items-center justify-between flex-wrap bg-teal-500 p-6 top-0 z-30">
+				<div class="flex items-center flex-shrink-0 text-white mr-6">
+					<svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"
+						/>
+					</svg>
+					<span class="font-semibold text-xl tracking-tight">Tailwind CSS</span>
+				</div>
+				<div class="block lg:hidden">
+					<button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+						<svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+							<title>Menu</title>
+							<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+						</svg>
+						<button @click="mobileMenu = true">
+							<i class="bx bx-menu text-4xl text-white"></i>
+						</button>
+					</button>
+				</div>
+				<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+					<div class="text-sm lg:flex-grow">
+						<a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"> Docs </a>
+						<a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"> Examples </a>
+						<a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"> Blog </a>
+					</div>
+					<div>
+						<a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Download</a>
+					</div>
+				</div>
+			</nav> -->
+								<!-- Mobile and small Screen Menu -->
+								<nav class="sticky bg-white h-12 top-0 z-30">
+									<div class="container mx-auto px-6 py-2 flex justify-between items-center">
+										<button x-on:click="open = true" class="absolute p-2 text-gray-500 hover:text-gray-700 top-0 right-0">
+											<span class="sr-only">open</span>
+
+											<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+												<path
+													fill-rule="evenodd"
+													d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
+													clip-rule="evenodd"
+												/>
+											</svg>
+										</button>
+									</div>
+								</nav>
+							</div>
+							<!-- Content -->
+							<div class="flex relative flex-shrink flex-wrap w-full h-full overflow-y-scroll">
+								<!-- <h1 class="text-center text-xl">Content</h1> -->
+
+								<!-- 2.1 Home Page -->
+								<div id="home-page" class="flex flex-col relative p-6">
+									<div class="relative flex flex-wrap flex-col md:flex-row">
+										<div class="relative lg:basis-3/4">
+											<div class="flex relative flex-wrap mx-auto">
+												<div class="w-full lg:basis-3/4">
+													<img class="" src="./assets/africa3dmapltdtransparent.png" alt="background" />
+												</div>
+												<div class="w-[40%] lg:basis-1/4">
+													<img class="p2" src="./assets/kenyaflag.png" alt="background" />
+												</div>
+											</div>
+											<div class="flex flex-wrap">
+												<div class="lg:basis-1/4 w-full">
+													<img class="lg:ml-4 p-2" src="./assets/KenyaSafaris.png" alt="background" />
+												</div>
+												<div class="lg:basis-3/4">
+													<p class="p-12 font-light text-3xl font-sans">
+														Welcome to our site. We have created 3 Kenya Tourist Maps covering the main parts of Kenya where most tourists travel to! Tourist maps have souvenir values and can serve as a cherished memento for your clients travels. Many tourists keep their maps as
+														keepsakes, filled with personal notes and memories.
+													</p>
+													<button
+														type="button"
+														class="ml-60 w-44 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-1 py-1 text-center me-2 mb-2"
+													>
+														<p class="p-2 text-xl">Contact us</p>
+													</button>
+												</div>
+											</div>
+										</div>
+										<div class="lg:basis-1/4 pt-4 pr-2">
+											<div class="md:max-w-[100%]"><img class="lg:ml-14 lg:w-60" src="./assets/KenyaBeaches.png" alt="background" /></div>
+											<div class="md:max-w-[100%]"><img class="lg:ml-14 md:mt-4 lg:w-60" src="./assets/dianimap.jpeg" alt="background" /></div>
+										</div>
+									</div>
+								</div>
+								<!-- 2.2 Safaris Map Page -->
+								<div id=" id="safaris-map" " class="flex flex-col relative ">
+								<div class="relative flex flex-wrap flex-col md:flex-row">
+									<div class="z-20 absolute w-full h-full">
+										<img class="object-cover" src="./assets/savannah.png" alt="background" style="width: 100%; height: 100%" />
+									</div>
+									<div class="p-4 lg:p-0">
+										<div class="flex relative flex-wrap flex-col md:p-12 lg:flex-row z-30 md:text-black">
+											<div class="lg:basis-1/2 z-30">
+												<p class="font-light text-3xl font-sans">The <b>Kenya Safaris Map </b>has a total of 7 Maps of which 6 are National Parks</p>
+											</div>
+											<div class="lg:basis-1/2 z-30lg:text-sm xl:text-lg xl:font-extrabold">
+												<p class="p-2 xl:ml-80 md:ml-52 font-bold xl:text-3xl font-sans"><b>Pricing</b></p>
+												<div class="flex flex-wrap flex-col lg:flex-row">
+													<div class="xl:basis-1/4 z-30"></div>
+													<div class="xl:basis-3/4 z-30">
+														<ul class="text-sm lg:text-xl">
+															<li><b class="mr-20">10 to 100 Map</b> <b> @ Ksh464/- inluding Vat</b></li>
+															<li><b class="mr-20">101 to 500 Map</b> <b> @ Ksh348/- inluding Vat</b></li>
+															<li><b class="mr-20">501 to 100 Map</b> <b> @ Ksh290/- inluding Vat</b></li>
+															<li><b class="mr-20">+1000 Maps</b> <b> @ Ksh232/- inluding Vat</b></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="lg:mt-56 flex relative flex-wrap flex-col lg:flex-row z-30">
+											<div class="lg:basis-1/2 z-30 lg:ml-52 md:p-12 md:text-black lg:text-cyan-100">
+												<p class="p-2 font-light text-3xl font-sans"><b> The 6 National Park Maps are:</b></p>
+												<ul class="text-2xl">
+													<li><b>Maasai Mara</b></li>
+													<li><b>Nairobi</b></li>
+													<li><b>Aberdare</b></li>
+													<li>
+														<b>Mt Kenya</b>
+														<button
+															type="button"
+															class="absolute w-80 ml-60 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2 mb-2"
+														>
+															<p class="text-xl p-2 mr-5">I’d like to place an order</p>
+														</button>
+													</li>
+													<li><b>Meru</b></li>
+													<li><b>Buffalo Springs, Samburu & Shaba</b></li>
+												</ul>
+											</div>
+											<div class="lg:basis-1/2 z-30 lg:inline-block">
+												<div class="flex flex-row flex-wrap">
+													<div class="lg:basis-1/2"></div>
+													<div class="lg:basis-1/2 p-4">
+														<div><img src="./assets/KenyaSafaris.png" alt="background" /></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Footer -->
+								<div class="w-full z-30">
+									<div class="bg-red-500 py-0">
+										<h1 class="text-center text-xl">Footer</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Right Sidebar / Menu Overlay-->
+					<div x-show="open" @click.outside="open = false" class="absolute md:hidden sm:hidden h-full flex-[0.3] lg:block inset-0 z-50 overflow-x-hidden">
+						<!-- <div class="grid h-full place-content-center bg-blue-600">
+							<h1 class="text-xl">Right</h1>
+							<h1 class="text-xl">Sidebar</h1>
+						</div> -->
+						<div
+							x-show="open"
+							x-transition:enter="transition-opacity ease-out duration-300"
+							x-transition:enter-start="opacity-0"
+							x-transition:enter-end="opacity-100"
+							x-transition:leave="transition-opacity ease-in duration-300"
+							x-transition:leave-start="opacity-100"
+							x-transition:leave-end="opacity-0"
+							class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+						></div>
+						<!-- Sidebar Content -->
+						<section class="absolute inset-y-0 right-0 pl-10 max-w-full flex" style="z-index: 1000">
+							<div
+								x-show="open"
+								x-transition:enter="transition-transform ease-out duration-300"
+								x-transition:enter-start="transform translate-x-full"
+								x-transition:enter-end="transform translate-x-0"
+								x-transition:leave="transition-transform ease-in duration-300"
+								x-transition:leave-start="transform translate-x-0"
+								x-transition:leave-end="transform translate-x-full"
+								class="w-screen max-w-64"
+							>
+								<div class="h-full flex flex-col p-6 bg-white shadow-xl">
+									<div class="flex items-center justify-between px-2 right-0">
+										<button x-on:click="open = false" class="text-gray-500 hover:text-gray-700">
+											<span class="sr-only">Close</span>
+											<svg class="h-6 w-6" x-description="Heroicon name: x" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+											</svg>
+										</button>
+									</div>
+									<!-- Sidebar Header -->
+									<ul class="mt-2 flex flex-col p-0 font-sans text-base font-bold">
+										<li class="p-2">
+											<span @click="triggerNavItem('#home-page')" class="cursor-pointer pt-0.5 font-header font-semibold text-black">Home Page</span>
+										</li>
+										<li class="p-2">
+											<span @click="triggerNavItem('#safaris-map')" class="cursor-pointer pt-0.5 font-header font-semibold text-black">Safaris Map</span>
+										</li>
+										<li class="p-2">
+											<span @click="triggerNavItem('#beaches-map')" class="cursor-pointer pt-0.5 font-header font-semibold text-black">Beaches Map</span>
+										</li>
+										<li class="p-2">
+											<span @click="triggerNavItem('#diani-mara-map')" class="cursor-pointer pt-0.5 font-header font-semibold text-black">Diani/Mara Map</span>
+										</li>
+										<li class="p-2">
+											<span @click="triggerNavItem('#customised-branded-maps')" class="cursor-pointer pt-0.5 font-header font-semibold text-black">Customised Branded Maps</span>
+										</li>
+										<li class="p-2">
+											<span @click="triggerNavItem('#bulk-maps-order-form')" class="cursor-pointer pt-0.5 font-header font-semibold text-black">Bulk Maps Order Form</span>
+										</li>
+										<li class="p-2">
+											<span @click="triggerNavItem('#ad-booking-form-page-1')" class="cursor-pointer pt-0.5 font-header font-semibold text-black">AD Booking Form Page 1</span>
+										</li>
+										<li class="p-2">
+											<span @click="triggerNavItem('#ad-booking-form-page-2')" class="cursor-pointer pt-0.5 font-header font-semibold text-black">AD Booking Form Page 2</span>
+										</li>
+										<li class="p-2">
+											<span @click="triggerNavItem('#contact-us')" class="cursor-pointer pt-0.5 font-header font-semibold text-black">Contact Us</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</body>
+		</html>
+		<script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+	</body>
+</html>

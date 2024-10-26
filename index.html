@@ -34,6 +34,20 @@
 		<!-- <script src="https://cdn.tailwindcss.com"></script> -->
 		<!-- <link href="styles.css" rel="stylesheet" />
 		<link href="tailwind.css" rel="stylesheet" /> -->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+		<script type="text/javascript">
+			(function () {
+				emailjs.init({
+					publicKey: "6_tNcp-iBTQ09T2Ql",
+					limitRate: {
+						// Set the limit rate for the application
+						id: "app",
+						// Allow 1 request per 10s
+						throttle: 10000,
+					},
+				});
+			})();
+		</script>
 		<script>
 			window.__forceSmoothScrollPolyfill__ = true;
 			// var scrollDiv = document.getElementById("contact-us").offsetTop;
@@ -50,9 +64,13 @@
 	<body>
 		<div
 			class="w-full flex flex-wrap h-svh max-h-svh bg-gradient-to-br from-teal-200 via-zinc-200 to-stone-300"
-			x-data="{ open: false, toggle() { 
+			x-data="{ open: false,contactOpen: false,sendSuccess: false,concerning :'',useForm:{name:'',phone:'',email:'',message:'',concerning:''}, toggle() { 
         this.open = ! this.open 
+     
+       },
+       contactToggle() { 
        
+        this.contactOpen = ! this.contactOpen
        },
        triggerNavItem(id) {
         this.open = ! this.open
@@ -61,8 +79,29 @@
         document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
           
       },
-      triggeButton(id){
+      submitEmail(body){
+        alert(this.concerning)
+       
+        body.concerning=this.concerning
+        console.log(body)
+
+        emailjs.send('service_7fq6611', 'template_5uolzq6',body,{}).then(
+            (response) => {
+              console.log('SUCCESS!', response.status, response.text);
+              this.sendSuccess=true
+            },
+            (error) => {
+              console.log('FAILED...', error);
+            },
+          );
+      },
+      triggeButton(id,concern){
+        this.concerning= concern
         document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+        setTimeout(()=>{
+          this.contactToggle()
+        },1000)
+        
       },
       triggerMobileNavItem(id) {
           mobileMenu = false;
@@ -95,6 +134,7 @@
 						</nav>
 					</div>
 					<!-- side overlay-->
+
 					<div x-show="open" @click.outside="open = false" class="absolute h-full flex-[0.3] inset-0 z-[100] overflow-x-hidden">
 						<!-- <div class="grid h-full place-content-center bg-blue-600">
               <h1 class="text-xl">Right</h1>
@@ -167,7 +207,7 @@
 					</div>
 
 					<!-- Content -->
-					<div class="flex relative flex-shrink flex-wrap w-full h-full xl:p-28 overflow-y-scroll">
+					<div class="flex relative flex-shrink flex-wrap w-full h-full xl:p-24 overflow-y-scroll">
 						<!-- 2.1 Home Page -->
 						<div id="home-page" class="flex flex-col flex-wrap relative p-6 transition duration-1000 ease-in">
 							<div class="relative flex flex-wrap flex-col md:flex-row">
@@ -193,7 +233,7 @@
 												type="button"
 												class="ml-[30%] lg:ml-60 w-72 lg:w-44 text-gray-900 bg-gradient-to-r from-red-200 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-1 py-1 text-center me-2 mb-2"
 											>
-												<a @click="triggeButton('#contact-us')" href="#contact-us"> <p class="p-2 text-3xl lg:text-xl">Contact Us</p></a>
+												<a @click="triggeButton('#contact-us','home')" href="#contact-us"> <p class="p-2 text-3xl lg:text-xl">Contact Us</p></a>
 											</button>
 										</div>
 									</div>
@@ -248,7 +288,7 @@
 														type="button"
 														class="absolute hidden lg:inline w-80 ml-32 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2 mb-2"
 													>
-														<a @click="triggeButton('#contact-us')" href="#contact-us"> <p class="text-xl p-2 mr-5">I’d like to place an order</p></a>
+														<a @click="triggeButton('#contact-us','safaris-map-order')" href="#contact-us"> <p class="text-xl p-2 mr-5">I’d like to place an order</p></a>
 													</button>
 												</li>
 												<li><b>Meru</b></li>
@@ -258,7 +298,7 @@
 												type="button"
 												class="lg:hidden mt-5 lg:ml-52 shrink text-gray-900 bg-gradient-to-r from-red-300 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2 mb-2"
 											>
-												<a @click="triggeButton('#contact-us')" href="#contact-us"><p class="text-lg p-2">I’d like to place an order</p></a>
+												<a @click="triggeButton('#contact-us','safaris-map-order')" href="#contact-us"><p class="text-lg p-2">I’d like to place an order</p></a>
 											</button>
 										</div>
 										<div class="lg:basis-1/2 z-30">
@@ -311,7 +351,7 @@
 													type="button"
 													class="lg:w-96 mt-10 lg:ml-96 text-gray-900 bg-gradient-to-r from-red-300 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2 mb-2"
 												>
-													<a @click="triggeButton('#contact-us')" href="#contact-us"><p class="text-lg lg:text-2xl p-2 mr-5">I’d like to place an order</p></a>
+													<a @click="triggeButton('#contact-us','beaches-map-order')" href="#contact-us"><p class="text-lg lg:text-2xl p-2 mr-5">I’d like to place an order</p></a>
 												</button>
 											</div>
 										</div>
@@ -366,7 +406,7 @@
 											type="button"
 											class="w-auto ml-11 text-gray-900 bg-gradient-to-r mb-48 from-red-300 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2"
 										>
-											<a @click="triggeButton('#contact-us')" href="#contact-us"><p class="text-lg lg:text-xl p-2 mr-5">I’d like to place an order</p></a>
+											<a @click="triggeButton('#contact-us','diani-mara-map-order')" href="#contact-us"><p class="text-lg lg:text-xl p-2 mr-5">I’d like to place an order</p></a>
 										</button>
 									</div>
 								</div>
@@ -388,7 +428,7 @@
 										type="button"
 										class="text-gray-900 ml-[10%] mb-10 bg-gradient-to-r from-red-300 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2"
 									>
-										<a @click="triggeButton('#contact-us')" href="#contact-us"><p class="text-xl p-2 mr-8 ml-8">I am interested in this</p></a>
+										<a @click="triggeButton('#contact-us','customised-branded-maps-interested')" href="#contact-us"><p class="text-xl p-2 mr-8 ml-8">I am interested in this</p></a>
 									</button>
 								</div>
 							</div>
@@ -492,6 +532,7 @@
 													</div>
 												</li>
 											</ul>
+
 											<h2 class="p-14 font-light text-4xl"><b>Locations</b></h2>
 											<img src="./assets/locations.png" class="pl-16 w-60 h-24" alt="background" />
 											<ul class="text-2xl pl-16">
@@ -500,14 +541,73 @@
 												<li class="p-4">Gigiri, Nairobi</li>
 											</ul>
 										</div>
-										<div class="lg:basis-2/5">
-											<img src="./assets/contactkenya.png" alt="brandedmaps" class="pr-20" />
+										<div class="lg:basis-2/5"><img src="./assets/contactkenya.png" alt="brandedmaps" class="pr-20 z-20" /></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- end of main content -->
+						<div class="absolute m-6">
+							<!-- chat button-->
+							<div x-on:click="contactToggle()" class="fixed bottom-0 right-0 pl-10 px p-6 z-50 flex items-end justify-center w-64 h-6 cursor-pointer">
+								<!-- main -->
+								<div class="text-white shadow-xl flex items-center justify-center p-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 z-50 absolute">
+									<!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 group-hover:rotate-90 transition transition-all duration-[0.6s]">
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"
+									/>
+									<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+								</svg> -->
+									<svg x-show="!contactOpen" class="cursor-pointer w-[65px] h-[65px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 24 24">
+										<path fill-rule="evenodd" d="M4 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1v2a1 1 0 0 0 1.707.707L9.414 13H15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4Z" clip-rule="evenodd" />
+										<path fill-rule="evenodd" d="M8.023 17.215c.033-.03.066-.062.098-.094L10.243 15H15a3 3 0 0 0 3-3V8h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-1v2a1 1 0 0 1-1.707.707L14.586 18H9a1 1 0 0 1-.977-.785Z" clip-rule="evenodd" />
+									</svg>
+									<svg x-show="contactOpen" class="cursor-pointer w-[65px] h-[65px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 24 24">
+										<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M6 18 17.94 6M18 18 6.06 6" />
+									</svg>
+								</div>
+							</div>
+							<!-- Modal -->
+							<div x-show="contactOpen" @click.outside="contactOpen = false" id="contactFormModal" class="fixed z-50 bottom-0 right-0 p-6 justify-end overflow-y-auto w-96 rounded-3xl">
+								<div class="flex items-center justify-end min-h-screen overflow-y-auto">
+									<div class="flex flex-col bg-white rounded shadow-md overflow-y-auto h-10">
+										<div class="h-[40%] bg-gradient-to-br p-6 from-teal-200 via-zinc-200 to-stone-300">
+											<!-- Close Button -->
+											<!-- <div class="flex justify-end">
+										
+											<button id="closeContactForm" class="text-gray-700 hover:text-red-500">
+												<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+												</svg>
+											</button>
+										</div> -->
+											<h2 class="text-2xl font-bold mb-4">Contact Us</h2>
+										</div>
+										<div class="h-[60%] p-6 overflow-scroll">
+											<form x-on:submit.prevent="submitEmail(useForm)">
+												<div class="mb-4">
+													<input type="text" id="name" x-model="useForm.name" name="name" placeholder="Name" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500" />
+												</div>
+												<div class="mb-4">
+													<input type="text" id="name" x-model="useForm.phone" name="phone" placeholder="Phone Number" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500" />
+												</div>
+												<div class="mb-4">
+													<input type="email" x-model="useForm.email" id="email" name="email" placeholder="Email" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500" />
+												</div>
+												<div class="mb-4">
+													<textarea id="message" x-model="useForm.message" name="message" placeholder="Message" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
+												</div>
+												<button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">Send Message</button>
+											</form>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<!-- end of main content -->
+
 						<!-- Footer -->
 						<div class="flex w-full z-30 bottom-0 bg-black text-white justify-center">
 							<p class="text-center text-xs">Copyrights Africa 3D Maps LTD @ 2024</p>
@@ -516,5 +616,19 @@
 				</div>
 			</div>
 		</div>
+		<script>
+			// JavaScript to toggle the modal
+			const openContactFormButton = document.getElementById("openContactForm");
+			const closeContactFormButton = document.getElementById("closeContactForm");
+			const contactFormModal = document.getElementById("contactFormModal");
+
+			openContactFormButton.addEventListener("click", () => {
+				contactFormModal.classList.remove("hidden");
+			});
+
+			closeContactFormButton.addEventListener("click", () => {
+				contactFormModal.classList.add("hidden");
+			});
+		</script>
 	</body>
 </html>

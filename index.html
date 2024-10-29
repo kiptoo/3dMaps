@@ -58,16 +58,82 @@
 
 		<script defer src="https://unpkg.com/alpinejs-scroll-to@latest/dist/scroll-to.min.js"></script>
 		<script defer src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/mattkingshott/iodine/dist/iodine.min.js"></script>
 		<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 	</head>
 
 	<body>
 		<div
 			class="w-full flex flex-wrap h-svh max-h-svh bg-gradient-to-br from-teal-200 via-zinc-200 to-stone-300"
-			x-data="{ open: false,contactOpen: false,sendSuccess: false,concerning :'',useForm:{name:'',phone:'',email:'',message:'',concerning:''}, toggle() { 
+			x-data="{ open: false,contactOpen: false,sendSuccess: false,sendingEmail: false,concerning :'General Enquiry',useForm:{name:'',phone:'',email:'',message:'',concerning:''}, toggle() { 
         this.open = ! this.open 
      
        },
+       formdata:{
+        fields: {
+          name: {
+            value: null,
+            rules: ['required'],
+            validate(callback) {
+              let { isValid, errorMsg } = callback(this)
+              this.isValid = isValid
+              this.errorMsg = errorMsg
+            },
+            isValid: null,
+            errorMsg: null
+          },
+          email: {
+            value: null,
+            rules: ['required', 'email'],
+            validate(callback) {
+              let { isValid, errorMsg } = callback(this)
+              this.isValid = isValid
+              this.errorMsg = errorMsg
+            },
+            isValid: null,
+            errorMsg: null
+          },
+          phone: {
+            value: null,
+            rules: ['required', 'phone'],
+            validate(callback) {
+              let { isValid, errorMsg } = callback(this)
+              console.log(isValid, errorMsg)
+              this.isValid = isValid
+              this.errorMsg = errorMsg
+            },
+            isValid: null,
+            errorMsg: null
+          },
+          message: {
+            value: null,
+            rules: ['optional', 'text'],
+            validate(callback) {
+              let { isValid, errorMsg } = callback(this)
+              console.log(isValid, errorMsg)
+              this.isValid = isValid
+              this.errorMsg = errorMsg
+            },
+            isValid: null,
+            errorMsg: null
+          }
+        },
+        isFormValid: true,
+        validationCallback(field) {
+          let { value, rules } = field
+          let isValid = Iodine.isValid(value, rules)
+          let errorMsg = isValid
+            ? null
+            : Iodine.getErrorMessage(Iodine.is(value, rules))
+          return { isValid, errorMsg }
+        },
+        submit() {
+          this.isFormValid = !Object.values(this.fields).some(
+            (field) => !field.isValid
+          );
+          return this.isFormValid
+        }
+      },
        contactToggle() { 
        
         this.contactOpen = ! this.contactOpen
@@ -79,19 +145,27 @@
         document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
           
       },
+
       submitEmail(body){
-        alert(this.concerning)
        
         body.concerning=this.concerning
         console.log(body)
-
+ this.sendingEmail=true
         emailjs.send('service_7fq6611', 'template_5uolzq6',body,{}).then(
             (response) => {
+              this.sendingEmail=false
               console.log('SUCCESS!', response.status, response.text);
               this.sendSuccess=true
+              this.useForm={name:'',phone:'',email:'',message:'',concerning:''}
+              setTimeout(()=>{
+                this.sendSuccess=false
+              },5000)
             },
             (error) => {
+              this.sendingEmail=false
               console.log('FAILED...', error);
+              this.sendSuccess=false
+              this.useForm={name:'',phone:'',email:'',message:'',concerning:''}
             },
           );
       },
@@ -207,7 +281,7 @@
 					</div>
 
 					<!-- Content -->
-					<div class="flex relative flex-shrink flex-wrap w-full h-full xl:p-24 overflow-y-scroll">
+					<div class="flex relative flex-shrink flex-wrap w-full h-full 2xl:p-12 overflow-y-scroll">
 						<!-- 2.1 Home Page -->
 						<div id="home-page" class="flex flex-col flex-wrap relative p-6 transition duration-1000 ease-in">
 							<div class="relative flex flex-wrap flex-col md:flex-row">
@@ -249,7 +323,7 @@
 						</div>
 
 						<!-- 2.2 Safaris Map Page -->
-						<div id="safaris-map" class="flex flex-col flex-wrap relative">
+						<div id="safaris-map" class="flex flex-col flex-wrap relative z-30">
 							<div class="relative flex flex-wrap flex-col md:flex-row">
 								<div class="z-20 absolute w-full h-full">
 									<img class="object-cover" src="./assets/savannah.png" alt="background" style="width: 100%; height: 100%" />
@@ -512,7 +586,7 @@
 							</div>
 						</div>
 						<!-- 2.9 contact-us -->
-						<div id="contact-us" class="h-auto w-full relative transition duration-1000 ease-in">
+						<div id="contact-us" class="h-auto w-full relative transition duration-5000 ease-in">
 							<div class="flex relative flex-wrap flex-row lg:flex-col z-30 text-black font-sans">
 								<div class="lg:basis-1/3">
 									<h2 class="p-14 lg:ml-[35%] font-medium text-5xl"><b>Contact Us</b></h2>
@@ -550,31 +624,31 @@
 						<!-- end of main content -->
 						<div class="absolute m-6">
 							<!-- chat button-->
-							<div x-on:click="contactToggle()" class="fixed bottom-0 right-0 pl-10 px p-6 z-50 flex items-end justify-center w-64 h-6 cursor-pointer">
+							<div x-on:click="contactToggle()" class="fixed bottom-0 right-0 pl-10 px p-6 z-50 flex items-end justify-center w-64 h-64 cursor-pointer">
 								<!-- main -->
 								<div class="text-white shadow-xl flex items-center justify-center p-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 z-50 absolute">
 									<!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 group-hover:rotate-90 transition transition-all duration-[0.6s]">
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"
-									/>
-									<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-								</svg> -->
-									<svg x-show="!contactOpen" class="cursor-pointer w-[65px] h-[65px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"
+                      />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg> -->
+									<svg x-show="!contactOpen" class="cursor-pointer w-[46px] h-[46px] text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor" viewBox="0 0 24 24">
 										<path fill-rule="evenodd" d="M4 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1v2a1 1 0 0 0 1.707.707L9.414 13H15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4Z" clip-rule="evenodd" />
 										<path fill-rule="evenodd" d="M8.023 17.215c.033-.03.066-.062.098-.094L10.243 15H15a3 3 0 0 0 3-3V8h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-1v2a1 1 0 0 1-1.707.707L14.586 18H9a1 1 0 0 1-.977-.785Z" clip-rule="evenodd" />
 									</svg>
-									<svg x-show="contactOpen" class="cursor-pointer w-[65px] h-[65px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 24 24">
+									<svg x-show="contactOpen" class="cursor-pointer w-[46px] h-[46px] text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="none" viewBox="0 0 24 24">
 										<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M6 18 17.94 6M18 18 6.06 6" />
 									</svg>
 								</div>
 							</div>
 							<!-- Modal -->
-							<div x-show="contactOpen" @click.outside="contactOpen = false" id="contactFormModal" class="fixed z-50 bottom-0 right-0 p-6 justify-end overflow-y-auto w-96 rounded-3xl">
-								<div class="flex items-center justify-end min-h-screen overflow-y-auto">
-									<div class="flex flex-col bg-white rounded shadow-md overflow-y-auto h-10">
-										<div class="h-[40%] bg-gradient-to-br p-6 from-teal-200 via-zinc-200 to-stone-300">
+							<div x-show="contactOpen" @click.outside="contactOpen = false" id="contactFormModal" class="fixed z-[100] bottom-10 right-0 p-6 overflow-y-auto w-96 h-auto">
+								<div class="flex justify-end rounded-xl overflow-y-auto">
+									<div class="flex flex-col bg-white rounded shadow-md overflow-hidden h-auto">
+										<div class="h-[20%] p-6 bg-gradient-to-br from-teal-200 via-zinc-200 to-stone-300">
 											<!-- Close Button -->
 											<!-- <div class="flex justify-end">
 										
@@ -586,21 +660,39 @@
 										</div> -->
 											<h2 class="text-2xl font-bold mb-4">Contact Us</h2>
 										</div>
-										<div class="h-[60%] p-6 overflow-scroll">
-											<form x-on:submit.prevent="submitEmail(useForm)">
+										<div x-show="sendSuccess" class="h-[80%] p-6 overflow-y-auto">
+											<div>
+												<div class="p-6 md:mx-auto">
+													<svg viewBox="0 0 24 24" width="42px" height="42px" class="w-16 h-16 mx-auto my-6">
+														<path fill="green" d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z"></path>
+													</svg>
+													<div class="text-center">
+														<h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">Message sent!</h3>
+														<p class="text-gray-600 my-2">Thank you for Contacting us.</p>
+														<p>we will get back tou you within 24hrs</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div x-show="!sendSuccess" class="h-[80%] p-6 overflow-y-auto">
+											<form x-data="formdata" x-on:submit.prevent="submit" class="">
 												<div class="mb-4">
-													<input type="text" id="name" x-model="useForm.name" name="name" placeholder="Name" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500" />
+													<input required @blur="fields.name.validate(validationCallback)" type="text" id="name" x-model="fields.name.value" name="name" placeholder="Name" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500" />
 												</div>
 												<div class="mb-4">
-													<input type="text" id="name" x-model="useForm.phone" name="phone" placeholder="Phone Number" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500" />
+													<input required @blur="fields.phone.validate(validationCallback)" type="text" id="phone" x-model="fields.phone.value" name="phone" placeholder="Phone Number" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500" />
 												</div>
 												<div class="mb-4">
-													<input type="email" x-model="useForm.email" id="email" name="email" placeholder="Email" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500" />
+													<input type="email" required @blur="fields.email.validate(validationCallback)" x-model="fields.email.value" id="email" name="email" placeholder="Email" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500" />
 												</div>
 												<div class="mb-4">
-													<textarea id="message" x-model="useForm.message" name="message" placeholder="Message" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
+													<textarea @blur="fields.message.validate(validationCallback)" id="message" x-model="fields.message.value" name="message" placeholder="Message" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
 												</div>
-												<button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">Send Message</button>
+												<button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">
+													<p x-show="!sendingEmail">Send Message</p>
+													<p x-show="sendingEmail">Sending....</p>
+												</button>
+												<span class="text-red-500 text-xs italic py-2" x-show="!isFormValid"> Form is not valid</span>
 											</form>
 										</div>
 									</div>

@@ -55,6 +55,11 @@
 			// window.scrollTo({ top: scrollDiv-70, behavior: 'smooth'});
 		</script>
 		<link href="./output.css" rel="stylesheet" />
+		<style>
+			.contactmodal {
+				transition: opacity 0.25s ease;
+			}
+		</style>
 
 		<script defer src="https://unpkg.com/alpinejs-scroll-to@latest/dist/scroll-to.min.js"></script>
 		<script defer src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
@@ -291,7 +296,8 @@
 											<img class="" src="./assets/africa3dmapltdtransparent.png" alt="background" />
 										</div>
 										<div class="lg:basis-1/4">
-											<img class="p-28 lg:p-6 w-[40%]" src="./assets/kenyaflag.png" alt="background" />
+											<!-- <img class="p-28 lg:p-6 w-[40%]" src="./assets/kenyaflag.png" alt="background" /> -->
+											<img class="p-2 lg:p-6 w-[40%] lg:w-[80%]" src="./assets/kenyaflag.png" alt="background" />
 										</div>
 									</div>
 									<div class="flex flex-wrap">
@@ -305,7 +311,7 @@
 											</p>
 											<button
 												type="button"
-												class="ml-[30%] lg:ml-60 w-72 lg:w-44 text-gray-900 bg-gradient-to-r from-red-200 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-1 py-1 text-center me-2 mb-2"
+												class="ml-[10%] lg:ml-60 w-72 lg:w-44 text-gray-900 bg-gradient-to-r from-red-200 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-1 py-1 text-center me-2 mb-2"
 											>
 												<a @click="triggeButton('#contact-us','home')" href="#contact-us"> <p class="p-2 text-3xl lg:text-xl">Contact Us</p></a>
 											</button>
@@ -333,16 +339,16 @@
 										<div class="lg:basis-1/2 z-30">
 											<p class="font-light text-3xl font-sans">The <b>Kenya Safaris Map </b>has a total of 7 Maps of which 6 are National Parks</p>
 										</div>
-										<div class="lg:basis-1/2 py-16 lg:py-0 z-30 text-3xl xl:text-lg xl:font-bold font-sans">
+										<div class="lg:basis-1/2 py-16 lg:py-0 z-30 text-xl xl:text-lg xl:font-bold font-sans">
 											<p class="p-2 2xl:ml-80 ml-[30%] xl:text-3xl"><b>Pricing</b></p>
-											<div class="flex flex-wrap flex-col lg:flex-row">
+											<div class="flex flex-wrap flex-col lg:flex-row justify-end text-black lg:text-white">
 												<div class="2xl:basis-1/4 z-30"></div>
-												<div class="2xl:basis-3/4 z-30">
-													<ul class="text-sm md:text-2xl">
-														<li><b class="mr-20">10 to 100 Map</b> <b> @ Ksh464/- inluding Vat</b></li>
-														<li><b class="mr-20">101 to 500 Map</b> <b> @ Ksh348/- inluding Vat</b></li>
-														<li><b class="mr-20">501 to 100 Map</b> <b> @ Ksh290/- inluding Vat</b></li>
-														<li><b class="mr-20">+1000 Maps</b> <b> @ Ksh232/- inluding Vat</b></li>
+												<div class="2xl:basis-3/4 z-30 text-black lg:text-white">
+													<ul class="text-sm md:text-xl text-black lg:text-white">
+														<li><b class="mr-5 lg:mr-20">10 to 100 Map</b><b>@ Ksh464/- inluding Vat</b></li>
+														<li><b class="mr-5 lg:mr-20">101 to 500 Map</b> <b> @ Ksh348/- inluding Vat</b></li>
+														<li><b class="mr-5 lg:mr-20">501 to 1000 Map</b> <b> @ Ksh290/- inluding Vat</b></li>
+														<li><b class="mr-5 lg:mr-20">+1000 Maps</b> <b> @ Ksh232/- inluding Vat</b></li>
 													</ul>
 												</div>
 											</div>
@@ -417,7 +423,7 @@
 													<ul class="text-sm lg:text-xl">
 														<li class="inline-block"><b class="mr-24">10 to 100 Map</b> <b> @ Ksh464/- inluding Vat</b></li>
 														<li class="inline-block"><b class="mr-20">101 to 500 Map</b> <b> @ Ksh348/- inluding Vat</b></li>
-														<li class="inline-block"><b class="mr-20">501 to 100 Map</b> <b> @ Ksh290/- inluding Vat</b></li>
+														<li class="inline-block"><b class="mr-20">501 to 1000 Map</b> <b> @ Ksh290/- inluding Vat</b></li>
 														<li class="inline-block"><b class="mr-28">+1000 Maps</b> <b> @ Ksh232/- inluding Vat</b></li>
 													</ul>
 												</div>
@@ -468,7 +474,7 @@
 											<ul class="text-sm md:text-xl">
 												<li class="inline-block"><b class="mr-24">10 to 100 Map</b> <b> @ Ksh464/- inluding Vat</b></li>
 												<li class="inline-block"><b class="mr-20">101 to 500 Map</b> <b> @ Ksh348/- inluding Vat</b></li>
-												<li class="inline-block"><b class="mr-20">501 to 100 Map</b> <b> @ Ksh290/- inluding Vat</b></li>
+												<li class="inline-block"><b class="mr-20">501 to 1000 Map</b> <b> @ Ksh290/- inluding Vat</b></li>
 												<li class="inline-block"><b class="mr-28">+1000 Maps</b> <b> @ Ksh232/- inluding Vat</b></li>
 											</ul>
 										</div>
@@ -622,12 +628,12 @@
 						</div>
 
 						<!-- end of main content -->
-						<div class="absolute m-6">
-							<!-- chat button-->
-							<div x-on:click="contactToggle()" class="fixed bottom-0 right-0 pl-10 px p-6 z-50 flex items-end justify-center w-64 h-64 cursor-pointer">
-								<!-- main -->
-								<div class="text-white shadow-xl flex items-center justify-center p-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 z-50 absolute">
-									<!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 group-hover:rotate-90 transition transition-all duration-[0.6s]">
+
+						<!-- chat button-->
+						<div x-on:click="contactToggle()" class="z-[100] fixed bottom-0 right-0 pl-10 p-6 flex items-end justify-end lg:justify-center w-80 h-80 lg:w-64 lg:h-64 cursor-pointer">
+							<!-- main -->
+							<div class="text-white shadow-xl flex items-center justify-center p-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 absolute">
+								<!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 group-hover:rotate-90 transition transition-all duration-[0.6s]">
                       <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -635,71 +641,68 @@
                       />
                       <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg> -->
-									<svg x-show="!contactOpen" class="cursor-pointer w-[46px] h-[46px] text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor" viewBox="0 0 24 24">
-										<path fill-rule="evenodd" d="M4 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1v2a1 1 0 0 0 1.707.707L9.414 13H15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4Z" clip-rule="evenodd" />
-										<path fill-rule="evenodd" d="M8.023 17.215c.033-.03.066-.062.098-.094L10.243 15H15a3 3 0 0 0 3-3V8h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-1v2a1 1 0 0 1-1.707.707L14.586 18H9a1 1 0 0 1-.977-.785Z" clip-rule="evenodd" />
-									</svg>
-									<svg x-show="contactOpen" class="cursor-pointer w-[46px] h-[46px] text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="none" viewBox="0 0 24 24">
-										<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M6 18 17.94 6M18 18 6.06 6" />
-									</svg>
-								</div>
+								<svg x-show="!contactOpen" class="cursor-pointer w-[62px] h-[62px] lg:w-[46px] lg:h-[46px] text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor" viewBox="0 0 24 24">
+									<path fill-rule="evenodd" d="M4 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1v2a1 1 0 0 0 1.707.707L9.414 13H15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4Z" clip-rule="evenodd" />
+									<path fill-rule="evenodd" d="M8.023 17.215c.033-.03.066-.062.098-.094L10.243 15H15a3 3 0 0 0 3-3V8h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-1v2a1 1 0 0 1-1.707.707L14.586 18H9a1 1 0 0 1-.977-.785Z" clip-rule="evenodd" />
+								</svg>
+								<svg x-show="contactOpen" class="cursor-pointer w-[62px] h-[62px] lg:w-[46px] lg:h-[46px] text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="none" viewBox="0 0 24 24">
+									<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M6 18 17.94 6M18 18 6.06 6" />
+								</svg>
 							</div>
-							<!-- Modal -->
-							<div x-show="contactOpen" @click.outside="contactOpen = false" id="contactFormModal" class="fixed z-[100] bottom-10 right-0 p-6 overflow-y-auto w-96 h-auto">
-								<div class="flex justify-end rounded-xl overflow-y-auto">
-									<div class="flex flex-col bg-white rounded shadow-md overflow-hidden h-auto">
-										<div class="h-[20%] p-6 bg-gradient-to-br from-teal-200 via-zinc-200 to-stone-300">
-											<!-- Close Button -->
-											<!-- <div class="flex justify-end">
-										
-											<button id="closeContactForm" class="text-gray-700 hover:text-red-500">
+						</div>
+						<!-- Modal -->
+						<div x-show="contactOpen" @click.outside="contactOpen = false" id="contactFormModal" class="contactmodal fixed z-50 lg:bottom-10 right-0 lg:p-6 overflow-y-auto w-full h-full lg:w-96 lg:h-auto">
+							<div class="flex flex-col lg:justify-end rounded-xl overflow-y-auto h-auto sm:h-screen">
+								<div class="flex flex-col bg-white rounded shadow-md overflow-hidden h-auto sm:h-screen">
+									<div class="h-[20%] w-full p-6 bg-gradient-to-br from-teal-200 via-zinc-200 to-stone-300">
+										<!-- Close Button -->
+										<div class="flex justify-end">
+											<button @click="contactOpen = false" id="closeContactForm" class="lg:hidden text-gray-700 hover:text-red-500">
 												<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
 												</svg>
 											</button>
-										</div> -->
-											<h2 class="text-2xl font-bold mb-4">Contact Us</h2>
 										</div>
-										<div x-show="sendSuccess" class="h-[80%] p-6 overflow-y-auto">
-											<div>
-												<div class="p-6 md:mx-auto">
-													<svg viewBox="0 0 24 24" width="42px" height="42px" class="w-16 h-16 mx-auto my-6">
-														<path fill="green" d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z"></path>
-													</svg>
-													<div class="text-center">
-														<h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">Message sent!</h3>
-														<p class="text-gray-600 my-2">Thank you for Contacting us.</p>
-														<p>we will get back tou you within 24hrs</p>
-													</div>
+										<h2 class="text-2xl font-bold mb-4">Contact Us</h2>
+									</div>
+									<div x-show="sendSuccess" class="h-[80%] p-6 overflow-y-auto">
+										<div>
+											<div class="p-6 md:mx-auto">
+												<svg viewBox="0 0 24 24" width="42px" height="42px" class="w-16 h-16 mx-auto my-6">
+													<path fill="green" d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z"></path>
+												</svg>
+												<div class="text-center">
+													<h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">Message sent!</h3>
+													<p class="text-gray-600 my-2">Thank you for Contacting us.</p>
+													<p>we will get back tou you within 24hrs</p>
 												</div>
 											</div>
 										</div>
-										<div x-show="!sendSuccess" class="h-[80%] p-6 overflow-y-auto">
-											<form x-data="formdata" x-on:submit.prevent="submit" class="">
-												<div class="mb-4">
-													<input required @blur="fields.name.validate(validationCallback)" type="text" id="name" x-model="fields.name.value" name="name" placeholder="Name" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500" />
-												</div>
-												<div class="mb-4">
-													<input required @blur="fields.phone.validate(validationCallback)" type="text" id="phone" x-model="fields.phone.value" name="phone" placeholder="Phone Number" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500" />
-												</div>
-												<div class="mb-4">
-													<input type="email" required @blur="fields.email.validate(validationCallback)" x-model="fields.email.value" id="email" name="email" placeholder="Email" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500" />
-												</div>
-												<div class="mb-4">
-													<textarea @blur="fields.message.validate(validationCallback)" id="message" x-model="fields.message.value" name="message" placeholder="Message" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
-												</div>
-												<button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">
-													<p x-show="!sendingEmail">Send Message</p>
-													<p x-show="sendingEmail">Sending....</p>
-												</button>
-												<span class="text-red-500 text-xs italic py-2" x-show="!isFormValid"> Form is not valid</span>
-											</form>
-										</div>
+									</div>
+									<div x-show="!sendSuccess" class="h-[80%] p-6 overflow-y-auto">
+										<form x-data="formdata" x-on:submit.prevent="submit" class="">
+											<div class="mb-4">
+												<input required @blur="fields.name.validate(validationCallback)" type="text" id="name" x-model="fields.name.value" name="name" placeholder="Name" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500" />
+											</div>
+											<div class="mb-4">
+												<input required @blur="fields.phone.validate(validationCallback)" type="text" id="phone" x-model="fields.phone.value" name="phone" placeholder="Phone Number" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500" />
+											</div>
+											<div class="mb-4">
+												<input type="email" required @blur="fields.email.validate(validationCallback)" x-model="fields.email.value" id="email" name="email" placeholder="Email" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500" />
+											</div>
+											<div class="mb-4">
+												<textarea @blur="fields.message.validate(validationCallback)" id="message" x-model="fields.message.value" name="message" placeholder="Message" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
+											</div>
+											<button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">
+												<p x-show="!sendingEmail">Send Message</p>
+												<p x-show="sendingEmail">Sending....</p>
+											</button>
+											<span class="text-red-500 text-xs italic py-2" x-show="!isFormValid"> Form is not valid</span>
+										</form>
 									</div>
 								</div>
 							</div>
 						</div>
-
 						<!-- Footer -->
 						<div class="flex w-full z-30 bottom-0 bg-black text-white justify-center">
 							<p class="text-center text-xs">Copyrights Africa 3D Maps LTD @ 2024</p>

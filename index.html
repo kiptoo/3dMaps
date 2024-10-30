@@ -110,9 +110,9 @@
             isValid: null,
             errorMsg: null
           },
-          message: {
+           message: {
             value: null,
-            rules: ['optional', 'text'],
+            rules: ['required'],
             validate(callback) {
               let { isValid, errorMsg } = callback(this)
               console.log(isValid, errorMsg)
@@ -121,9 +121,9 @@
             },
             isValid: null,
             errorMsg: null
-          }
+          } 
         },
-        isFormValid: true,
+        isFormValid: false,
         validationCallback(field) {
           console.log(field)
           let { value, rules } = field
@@ -134,9 +134,13 @@
           return { isValid, errorMsg }
         },
         submit() {
+          alert('submit')
+          let myfields = Object.values(this.fields)
+          console.log('myfields',myfields)
           this.isFormValid = !Object.values(this.fields).some(
             (field) => !field.isValid
           );
+          alert(this.isFormValid)
           return this.isFormValid
         }
       },
@@ -156,7 +160,7 @@
        
         body.concerning=this.concerning
         console.log(body)
- this.sendingEmail=true
+        this.sendingEmail=true
         emailjs.send('service_7fq6611', 'template_5uolzq6',body,{}).then(
             (response) => {
               this.sendingEmail=false
@@ -652,7 +656,7 @@
 							</div>
 						</div>
 						<!-- Modal -->
-						<div x-show="contactOpen" @click.outside="contactOpen = false" id="contactFormModal" class="contactmodal fixed z-50 lg:bottom-10 right-0 lg:p-6 overflow-y-auto w-full h-full lg:w-96 lg:h-auto">
+						<div x-show="contactOpen" x-transition:enter.duration.500ms x-transition:leave.duration.400ms @click.outside="contactOpen = false" id="contactFormModal" class="contactmodal fixed z-50 lg:bottom-10 right-0 lg:p-6 overflow-y-auto w-full h-full lg:w-96 lg:h-auto">
 							<div class="flex flex-col lg:justify-end rounded-xl overflow-y-auto h-auto sm:h-screen">
 								<div class="flex flex-col bg-white rounded shadow-md overflow-hidden h-auto sm:h-screen">
 									<div class="h-[20%] w-full p-6 bg-gradient-to-br from-teal-200 via-zinc-200 to-stone-300">
@@ -704,11 +708,10 @@
 											<div class="mb-4">
 												<textarea @blur="fields.message.validate(validationCallback)" id="message" x-model="fields.message.value" name="message" placeholder="Message" class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
 											</div>
-											<button type="submit" x-bind:disabled="isFormInvalid" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">
+											<button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">
 												<p x-show="!sendingEmail">Send Message</p>
 												<p x-show="sendingEmail">Sending....</p>
 											</button>
-											<span class="text-red-500 text-xs italic py-2" x-show="!isFormValid"> Form is not valid</span>
 										</form>
 									</div>
 								</div>

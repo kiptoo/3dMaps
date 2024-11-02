@@ -73,60 +73,69 @@
        
         this.contactOpen = ! this.contactOpen
        },
-       triggerNavItem(id) {
+       triggerNavItem(caller,id) {
         this.open = ! this.open
         this.triggerfromNav = ! this.triggerfromNav
+     
      
         document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
         setTimeout(()=>{
         
           this.triggerfromNav=false
+          this.TriggerSwitch(caller)
+          
         },1000)
           
       },
       triggerScroll(caller,id) {
-        
+       // console.log('triggerScroll 1',caller,id,this.triggerfromNav)
         if( this.triggerfromNav ) return;
-       // alert(caller +','+ id)
+     //  console.log('triggerScroll 2',caller,id)
         document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+        this.TriggerSwitch(caller)
+     
+       
+      },
+      TriggerSwitch(caller){
+       // console.log('switch caller',caller)
         switch(caller) {
           case 'safarishown':
-           
-           setTimeout(()=>{
+          
+          setTimeout(()=>{
                 this.safarishown = !this.safarishown
               },1000)
             
             break;
           case 'beachshown':
-           
-             setTimeout(()=>{
+          
+            setTimeout(()=>{
               this.beachshown = !this.beachshown
             },1000)
-    
+
             break;
           case 'contactusshown':
-           
+          
             setTimeout(()=>{
               this.contactusshown = !this.contactusshown
             },1000)
             
             break;  
-           case 'adbooking1shown':
-         
+          case 'adbooking1shown':
+        
             setTimeout(()=>{
               this.adbooking1shown = !this.adbooking1shown
             },1000)
             
             break; 
           case 'adbooking2shown':
-         
+             // console.log(' this.adbooking2shown', this.adbooking2shown)
             setTimeout(()=>{
               this.adbooking2shown = !this.adbooking2shown
             },1000)
             
             break;   
           case 'bulkmapsordershown':
-         
+        
             setTimeout(()=>{
               this.bulkmapsordershown = !this.bulkmapsordershown
             },1000)
@@ -134,22 +143,22 @@
             break;    
 
           case 'dianimarashown':
-         
+        
             setTimeout(()=>{
               this.dianimarashown = !this.dianimarashown
             },1000)
             
             break;    
 
-           case 'custommapshown':
-         
+          case 'custommapshown':
+        
             setTimeout(()=>{
               this.custommapshown = !this.custommapshown
             },1000)
             
             break;   
             case 'homeshown':
-         
+        
             setTimeout(()=>{
               this.homeshown = !this.homeshown
             },1000)
@@ -158,21 +167,16 @@
           default:
             // code block
         }
-      
-      
-      
-          
       },
-
       submitEmail(body){
        
         body.concerning=this.concerning
-        console.log(body)
+       // console.log(body)
         this.sendingEmail=true
         emailjs.send('service_7fq6611', 'template_5uolzq6',body,{}).then(
             (response) => {
               this.sendingEmail=false
-              console.log('SUCCESS!', response.status, response.text);
+             // console.log('SUCCESS!', response.status, response.text);
               this.sendSuccess=true
               this.useForm={name:'',phone:'',email:'',message:'',concerning:''}
               setTimeout(()=>{
@@ -197,9 +201,9 @@
         },1000)
         
       },
-      triggerMobileNavItem(id) {
+      triggerMobileNavItem(caller,id) {
           mobileMenu = false;
-          this.triggerNavItem(id)
+          this.triggerNavItem(caller,id)
       }
       }"
 		>
@@ -251,31 +255,31 @@
 									<!-- Sidebar Header -->
 									<ul class="mt-2 flex flex-col p-0 font-sans text-base font-bold">
 										<li class="p-2">
-											<span @click="triggerNavItem('#home-page')" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#home-page">Home Page</a> </span>
+											<span @click="triggerNavItem('homeshown','#home-page')" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#home-page">Home Page</a> </span>
 										</li>
 										<li class="p-2">
-											<span @click="triggerNavItem('#safaris-map' )" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#safaris-map">Safaris Map</a> </span>
+											<span @click="triggerNavItem('safarishown','#safaris-map' )" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#safaris-map">Safaris Map</a> </span>
 										</li>
 										<li class="p-2">
-											<span @click="triggerNavItem('#beaches-map')" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#beaches-map">Beaches Map</a></span>
+											<span @click="triggerNavItem('beachshown','#beaches-map')" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#beaches-map">Beaches Map</a></span>
 										</li>
 										<li class="p-2">
-											<span @click="triggerNavItem('#diani-mara-map')" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#diani-mara-map">Diani/Mara Map</a></span>
+											<span @click="triggerNavItem('dianimarashown','#diani-mara-map')" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#diani-mara-map">Diani/Mara Map</a></span>
 										</li>
 										<li class="p-2">
-											<span @click="triggerNavItem('#customised-branded-maps')" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#customised-branded-maps">Customised Branded Map</a>s</span>
+											<span @click="triggerNavItem('custommapshown','#customised-branded-maps')" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#customised-branded-maps">Customised Branded Map</a>s</span>
 										</li>
 										<li class="p-2">
-											<span @click="triggerNavItem('#bulk-maps-order-form')" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#bulk-maps-order-form">Bulk Maps Order Form</a></span>
+											<span @click="triggerNavItem('bulkmapsordershown','#bulk-maps-order-form')" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#bulk-maps-order-form">Bulk Maps Order Form</a></span>
 										</li>
 										<li class="p-2">
-											<span @click="triggerNavItem('#ad-booking-form-page-1')" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#ad-booking-form-page-1">AD Booking Form Page 1</a></span>
+											<span @click="triggerNavItem('adbooking1shown','#ad-booking-form-page-1')" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#ad-booking-form-page-1">AD Booking Form Page 1</a></span>
 										</li>
 										<li class="p-2">
-											<span @click="triggerNavItem('#ad-booking-form-page-2')" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#ad-booking-form-page-2">AD Booking Form Page 2</a></span>
+											<span @click="triggerNavItem('adbooking2shown','#ad-booking-form-page-2')" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#ad-booking-form-page-2">AD Booking Form Page 2</a></span>
 										</li>
 										<li class="p-2">
-											<span @click="triggerNavItem('#contact-us')" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#contact-us">Contact Us</a></span>
+											<span @click="triggerNavItem('contactusshown','#contact-us')" class="cursor-pointer pt-0.5 font-header font-semibold text-black"><a href="#contact-us">Contact Us</a></span>
 										</li>
 									</ul>
 								</div>

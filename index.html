@@ -65,7 +65,7 @@
 		<div
 			x-cloak
 			class="w-full flex flex-wrap h-svh max-h-svh bg-gradient-to-br from-teal-200 via-zinc-200 to-stone-300"
-			x-data="{ open: false,triggerfromNav:false,contactOpen: false,sendSuccess: false,sendingEmail: false,concerning :'General Enquiry',useForm:{name:'',phone:'',email:'',message:'',concerning:''},homeshown:false, safarishown:false,contactusshown:false,adbooking1shown:false,adbooking2shown:false,bulkmapsordershown:false,beachshown:false,dianimarashown:false,custommapshown:false, toggle() { 
+			x-data="{ open: false,triggerfromNav:false,contactOpen: false,sendSuccess: false,sendingEmail: false,concerning :'General Enquiry',useForm:{name:'',phone:'',email:'',message:'',concerning:''}, toggle() { 
         this.open = ! this.open 
      
        },
@@ -84,85 +84,7 @@
         },1000)
           
       },
-      triggerScroll(caller,id) {
-        
-        if( this.triggerfromNav ) return;
-       // alert(caller +','+ id)
-        document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-        switch(caller) {
-          case 'safarishown':
-           
-           setTimeout(()=>{
-                this.safarishown = !this.safarishown
-              },1000)
-            
-            break;
-          case 'beachshown':
-           
-             setTimeout(()=>{
-              this.beachshown = !this.beachshown
-            },1000)
-    
-            break;
-          case 'contactusshown':
-           
-            setTimeout(()=>{
-              this.contactusshown = !this.contactusshown
-            },1000)
-            
-            break;  
-           case 'adbooking1shown':
-         
-            setTimeout(()=>{
-              this.adbooking1shown = !this.adbooking1shown
-            },1000)
-            
-            break; 
-          case 'adbooking2shown':
-         
-            setTimeout(()=>{
-              this.adbooking2shown = !this.adbooking2shown
-            },1000)
-            
-            break;   
-          case 'bulkmapsordershown':
-         
-            setTimeout(()=>{
-              this.bulkmapsordershown = !this.bulkmapsordershown
-            },1000)
-            
-            break;    
 
-          case 'dianimarashown':
-         
-            setTimeout(()=>{
-              this.dianimarashown = !this.dianimarashown
-            },1000)
-            
-            break;    
-
-           case 'custommapshown':
-         
-            setTimeout(()=>{
-              this.custommapshown = !this.custommapshown
-            },1000)
-            
-            break;   
-            case 'homeshown':
-         
-            setTimeout(()=>{
-              this.homeshown = !this.homeshown
-            },1000)
-            
-            break;    
-          default:
-            // code block
-        }
-      
-      
-      
-          
-      },
 
       submitEmail(body){
        
@@ -284,269 +206,261 @@
 					</div>
 
 					<!-- Content -->
-					<div x-transition:enter.duration.500ms x-transition:leave.duration.400ms class="flex relative flex-shrink flex-wrap w-full h-full 2xl:p-12 overflow-y-scroll">
+					<div class="flex relative flex-shrink flex-wrap w-full h-full 2xl:p-12 overflow-y-scroll">
 						<!-- 2.1 Home Page -->
-						<div x-intersect.threshold.20="homeshown= true; triggerScroll('homeshown','#home-page');">
-							<div id="home-page" :class="homeshown ? 'animate-fade-up animate-once animate-duration-[1000ms] animate-delay-[1000ms] animate-ease-in animate-normal animate-fill-both flex flex-col flex-wrap relative p-6':'panel flex flex-col flex-wrap relative p-6'">
-								<div class="relative flex flex-wrap flex-col md:flex-row">
-									<div class="relative lg:basis-3/4">
-										<div class="flex relative flex-wrap mx-auto">
-											<div class="w-full lg:basis-3/4">
-												<img class="" src="./assets/africa3dmapltdtransparent.png" alt="background" />
-											</div>
-											<div class="lg:basis-1/4">
-												<!-- <img class="p-28 lg:p-6 w-[40%]" src="./assets/kenyaflag.png" alt="background" /> -->
-												<img class="p-2 lg:p-6 w-[40%] lg:w-[80%]" src="./assets/kenyaflag.png" alt="background" />
-											</div>
+						<div id="home-page" class="animate-fade-up animate-once animate-duration-[1000ms] animate-delay-[1000ms] animate-ease-in animate-normal animate-fill-both flex flex-col flex-wrap relative p-6">
+							<div class="relative flex flex-wrap flex-col md:flex-row">
+								<div class="relative lg:basis-3/4">
+									<div class="flex relative flex-wrap mx-auto">
+										<div class="w-full lg:basis-3/4">
+											<img class="" src="./assets/africa3dmapltdtransparent.png" alt="background" />
 										</div>
-										<div class="flex flex-wrap">
-											<div v class="lg:basis-1/4 w-full">
-												<img class="p-2 lg:p-2" src="./assets/KenyaSafaris.png" alt="background" />
-											</div>
-											<div class="lg:basis-3/4">
-												<p class="p-6 font-normal text-3xl font-sans">
-													Welcome to our site. We have created 3 Kenya Tourist Maps covering the main parts of Kenya where most tourists travel to!<br /><br />
-													Tourist maps have souvenir values and can serve as a cherished memento for your clients travels. Many tourists keep their maps as keepsakes, filled with personal notes and memories.
-												</p>
-												<button
-													type="button"
-													class="ml-[10%] lg:ml-60 w-72 lg:w-44 text-gray-900 bg-gradient-to-r from-red-200 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-1 py-1 text-center me-2 mb-2"
-												>
-													<a @click="triggeButton('#contact-us','home')" href="#contact-us"> <p class="p-2 text-3xl lg:text-xl">Contact Us</p></a>
-												</button>
-											</div>
+										<div class="lg:basis-1/4">
+											<!-- <img class="p-28 lg:p-6 w-[40%]" src="./assets/kenyaflag.png" alt="background" /> -->
+											<img class="p-2 lg:p-6 w-[40%] lg:w-[80%]" src="./assets/kenyaflag.png" alt="background" />
 										</div>
 									</div>
-									<div class="lg:basis-1/4">
-										<div style="transition: transform 0.3s ease" class="transition-transform p-6">
-											<img src="./assets/KenyaBeaches.png" alt="background" />
-
-											<img src="./assets/dianimap.jpeg" alt="background" />
+									<div class="flex flex-wrap">
+										<div v class="lg:basis-1/4 w-full">
+											<img class="p-2 lg:p-2" src="./assets/KenyaSafaris.png" alt="background" />
 										</div>
+										<div class="lg:basis-3/4">
+											<p class="p-6 font-normal text-3xl font-sans">
+												Welcome to our site. We have created 3 Kenya Tourist Maps covering the main parts of Kenya where most tourists travel to!<br /><br />
+												Tourist maps have souvenir values and can serve as a cherished memento for your clients travels. Many tourists keep their maps as keepsakes, filled with personal notes and memories.
+											</p>
+											<button
+												type="button"
+												class="ml-[10%] lg:ml-60 w-72 lg:w-44 text-gray-900 bg-gradient-to-r from-red-200 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-1 py-1 text-center me-2 mb-2"
+											>
+												<a @click="triggeButton('#contact-us','home')" href="#contact-us"> <p class="p-2 text-3xl lg:text-xl">Contact Us</p></a>
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="lg:basis-1/4">
+									<div style="transition: transform 0.3s ease" class="transition-transform p-6">
+										<img src="./assets/KenyaBeaches.png" alt="background" />
+
+										<img src="./assets/dianimap.jpeg" alt="background" />
 									</div>
 								</div>
 							</div>
 						</div>
 
 						<!-- 2.2 Safaris Map Page -->
-						<div x-intersect.threshold.20="safarishown = true; triggerScroll('safarishown','#safaris-map');">
-							<div :class="safarishown ? 'animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel flex flex-col flex-wrap relative z-30' : 'panel flex flex-col flex-wrap relative z-30'" id="safaris-map">
-								<div class="relative flex flex-wrap flex-col md:flex-row">
-									<div class="z-20 absolute w-full h-full">
-										<img class="object-cover" src="./assets/savannah.png" alt="background" style="width: 100%; height: 100%" />
-									</div>
-									<div class="p-0 h-auto">
-										<div class="flex relative flex-wrap flex-col md:p-12 lg:flex-row z-30 text-black p-4">
-											<div class="lg:basis-1/2 z-30">
-												<p class="font-light text-3xl font-sans">The <b>Kenya Safaris Map </b>has a total of 7 Maps of which 6 are National Parks</p>
-											</div>
-											<div class="lg:basis-1/2 py-16 lg:py-0 z-30 text-xl xl:text-lg xl:font-bold font-sans">
-												<p class="p-2 2xl:ml-80 ml-[30%] xl:text-3xl"><b>Pricing</b></p>
-												<div class="flex flex-wrap flex-col lg:flex-row justify-end text-black lg:text-white">
-													<div class="2xl:basis-1/4 z-30"></div>
-													<div class="2xl:basis-3/4 z-30 text-black lg:text-white">
-														<ul class="text-sm md:text-xl text-black lg:text-white">
-															<li><b class="mr-5 lg:mr-20">10 to 100 Map</b><b>@ Ksh464/- inluding Vat</b></li>
-															<li><b class="mr-5 lg:mr-20">101 to 500 Map</b> <b> @ Ksh348/- inluding Vat</b></li>
-															<li><b class="mr-5 lg:mr-20">501 to 1000 Map</b> <b> @ Ksh290/- inluding Vat</b></li>
-															<li><b class="mr-5 lg:mr-20">+1000 Maps</b> <b> @ Ksh232/- inluding Vat</b></li>
-														</ul>
-													</div>
+						<div class="animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel flex flex-col flex-wrap relative z-30" id="safaris-map">
+							<div class="relative flex flex-wrap flex-col md:flex-row">
+								<div class="z-20 absolute w-full h-full">
+									<img class="object-cover" src="./assets/savannah.png" alt="background" style="width: 100%; height: 100%" />
+								</div>
+								<div class="p-0 h-auto">
+									<div class="flex relative flex-wrap flex-col md:p-12 lg:flex-row z-30 text-black p-4">
+										<div class="lg:basis-1/2 z-30">
+											<p class="font-light text-3xl font-sans">The <b>Kenya Safaris Map </b>has a total of 7 Maps of which 6 are National Parks</p>
+										</div>
+										<div class="lg:basis-1/2 py-16 lg:py-0 z-30 text-xl xl:text-lg xl:font-bold font-sans">
+											<p class="p-2 2xl:ml-80 ml-[30%] xl:text-3xl"><b>Pricing</b></p>
+											<div class="flex flex-wrap flex-col lg:flex-row justify-end text-black lg:text-white">
+												<div class="2xl:basis-1/4 z-30"></div>
+												<div class="2xl:basis-3/4 z-30 text-black lg:text-white">
+													<ul class="text-sm md:text-xl text-black lg:text-white">
+														<li><b class="mr-5 lg:mr-20">10 to 100 Map</b><b>@ Ksh464/- inluding Vat</b></li>
+														<li><b class="mr-5 lg:mr-20">101 to 500 Map</b> <b> @ Ksh348/- inluding Vat</b></li>
+														<li><b class="mr-5 lg:mr-20">501 to 1000 Map</b> <b> @ Ksh290/- inluding Vat</b></li>
+														<li><b class="mr-5 lg:mr-20">+1000 Maps</b> <b> @ Ksh232/- inluding Vat</b></li>
+													</ul>
 												</div>
 											</div>
 										</div>
+									</div>
 
-										<div class="lg:mt-36 flex relative flex-wrap flex-col lg:flex-row z-30 p-4 lg:p-0 lg:pl-20">
-											<div class="lg:basis-1/2 z-30 md:p-12 text-cyan-100">
-												<p class="p-2 font-light text-3xl font-sans"><b> The 6 National Park Maps are:</b></p>
-												<ul class="text-2xl">
-													<li><b>Maasai Mara</b></li>
-													<li><b>Nairobi</b></li>
-													<li><b>Aberdare</b></li>
-													<li>
-														<b>Mt Kenya</b>
-														<button
-															type="button"
-															class="absolute hidden lg:inline w-80 ml-32 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2 mb-2"
-														>
-															<a @click="triggeButton('#contact-us','safaris-map-order')" href="#contact-us"> <p class="text-xl p-2 mr-5">I’d like to place an order</p></a>
-														</button>
-													</li>
-													<li><b>Meru</b></li>
-													<li><b>Buffalo Springs, Samburu & Shaba</b></li>
-												</ul>
-												<button
-													type="button"
-													class="lg:hidden mt-5 ml-[10%] lg:ml-52 shrink text-gray-900 bg-gradient-to-r from-red-300 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2 mb-2"
-												>
-													<a @click="triggeButton('#contact-us','safaris-map-order')" href="#contact-us"><p class="text-lg p-2">I’d like to place an order</p></a>
-												</button>
-											</div>
-											<div class="lg:basis-1/2 z-30">
-												<div class="lg:ml-[50%]"><img class="w-[100%] lg:w-[100%]" src="./assets/KenyaSafaris.png" alt="background" /></div>
-											</div>
+									<div class="lg:mt-36 flex relative flex-wrap flex-col lg:flex-row z-30 p-4 lg:p-0 lg:pl-20">
+										<div class="lg:basis-1/2 z-30 md:p-12 text-cyan-100">
+											<p class="p-2 font-light text-3xl font-sans"><b> The 6 National Park Maps are:</b></p>
+											<ul class="text-2xl">
+												<li><b>Maasai Mara</b></li>
+												<li><b>Nairobi</b></li>
+												<li><b>Aberdare</b></li>
+												<li>
+													<b>Mt Kenya</b>
+													<button
+														type="button"
+														class="absolute hidden lg:inline w-80 ml-32 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2 mb-2"
+													>
+														<a @click="triggeButton('#contact-us','safaris-map-order')" href="#contact-us"> <p class="text-xl p-2 mr-5">I’d like to place an order</p></a>
+													</button>
+												</li>
+												<li><b>Meru</b></li>
+												<li><b>Buffalo Springs, Samburu & Shaba</b></li>
+											</ul>
+											<button
+												type="button"
+												class="lg:hidden mt-5 ml-[10%] lg:ml-52 shrink text-gray-900 bg-gradient-to-r from-red-300 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2 mb-2"
+											>
+												<a @click="triggeButton('#contact-us','safaris-map-order')" href="#contact-us"><p class="text-lg p-2">I’d like to place an order</p></a>
+											</button>
+										</div>
+										<div class="lg:basis-1/2 z-30">
+											<div class="lg:ml-[50%]"><img class="w-[100%] lg:w-[100%]" src="./assets/KenyaSafaris.png" alt="background" /></div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+
 						<!-- 2.3 beaches-map Page -->
-						<div x-intersect.threshold.20="beachshown = true; triggerScroll('beachshown','#beaches-map'); ">
-							<div :class="beachshown ? 'animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel flex flex-col flex-wrap relative' : 'panel flex flex-col flex-wrap relative'" id="beaches-map">
+						<div class="animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel flex flex-col flex-wrap relative" id="beaches-map">
+							<div class="z-20 absolute w-full h-full">
+								<img class="object-cover" src="./assets/beachbg.png" alt="background" style="width: 100%; height: 100%" />
+							</div>
+							<div class="flex flex-wrap flex-col z-20">
 								<div class="z-20 absolute w-full h-full">
 									<img class="object-cover" src="./assets/beachbg.png" alt="background" style="width: 100%; height: 100%" />
 								</div>
-								<div class="flex flex-wrap flex-col z-20">
-									<div class="z-20 absolute w-full h-full">
-										<img class="object-cover" src="./assets/beachbg.png" alt="background" style="width: 100%; height: 100%" />
-									</div>
 
-									<div class="flex relative flex-wrap flex-row lg:flex-col md:p-12 z-30 text-black p-4 py-12">
-										<p class="p-2 font-light text-3xl font-sans">The <b>Kenya Beaches Map</b> has 12 Maps as well as 3 National Parks</p>
+								<div class="flex relative flex-wrap flex-row lg:flex-col md:p-12 z-30 text-black p-4 py-12">
+									<p class="p-2 font-light text-3xl font-sans">The <b>Kenya Beaches Map</b> has 12 Maps as well as 3 National Parks</p>
 
-										<div class="flex relative flex-wrap lg:flex-nowrap mt-10 flex-row z-30">
-											<div class="lg:basis-1/2 z-30 mt-12 text-slate-950">
-												<div class="flex flex-col flex-wrap P-2">
-													<div class="lg:basis-1/2">
-														<div class="flex flex-row flex-wrap P-2">
-															<div class="lg:basis-1/2">
-																<p class="p-2 font-light text-3xl font-sans"><b> The Beach Maps are:</b></p>
+									<div class="flex relative flex-wrap lg:flex-nowrap mt-10 flex-row z-30">
+										<div class="lg:basis-1/2 z-30 mt-12 text-slate-950">
+											<div class="flex flex-col flex-wrap P-2">
+												<div class="lg:basis-1/2">
+													<div class="flex flex-row flex-wrap P-2">
+														<div class="lg:basis-1/2">
+															<p class="p-2 font-light text-3xl font-sans"><b> The Beach Maps are:</b></p>
 
-																<ul class="text-2xl">
-																	<li><b>Diani</b></li>
-																	<li><b>Malindi</b></li>
-																	<li><b>Mombasa</b></li>
-																	<li>
-																		<b>lamu</b>
-																	</li>
-																	<li><b>Shimoni & Wasini Island </b></li>
-																	<li><b>Watamu</b></li>
-																	<li><b>North Coast</b></li>
-																</ul>
-															</div>
-															<div class="lg:basis-1/2 lg:mt-36">
-																<p class="py-2 font-light text-3xl font-sans"><b> The 3 National Park Maps are:</b></p>
-																<ul class="text-2xl">
-																	<li><b>Tsavo East & West & Chyulu Hills</b></li>
-																	<li><b>Amboseli </b></li>
-																	<li><b>Shimba Hills </b></li>
-																</ul>
-															</div>
-														</div>
-													</div>
-													<div class="lg:basis-1/2 z-30 mt-10 lg:ml-60">
-														<p class="p-2 font-medium text-3xl font-sans"><b>Pricing</b></p>
-														<div class="flex flex-wrap flex-row">
-															<ul class="text-sm lg:text-xl">
-																<li class="inline-block"><b class="mr-5 lg:mr-20">10 to 100 Map</b> <b> @ Ksh464/- inluding Vat</b></li>
-																<li class="inline-block"><b class="mr-5 lg:mr-20">101 to 500 Map</b> <b> @ Ksh348/- inluding Vat</b></li>
-																<li class="inline-block"><b class="mr-5 lg:mr-20">501 to 1000 Map</b> <b> @ Ksh290/- inluding Vat</b></li>
-																<li class="inline-block"><b class="mr-5 lg:mr-20">+1000 Maps</b> <b> @ Ksh232/- inluding Vat</b></li>
+															<ul class="text-2xl">
+																<li><b>Diani</b></li>
+																<li><b>Malindi</b></li>
+																<li><b>Mombasa</b></li>
+																<li>
+																	<b>lamu</b>
+																</li>
+																<li><b>Shimoni & Wasini Island </b></li>
+																<li><b>Watamu</b></li>
+																<li><b>North Coast</b></li>
 															</ul>
 														</div>
-
-														<button
-															type="button"
-															class="lg:w-96 mt-10 ml-[10%] lg:ml-60 text-gray-900 bg-gradient-to-r from-red-300 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2 mb-2"
-														>
-															<a @click="triggeButton('#contact-us','beaches-map-order')" href="#contact-us"><p class="text-lg lg:text-2xl p-2 mr-5">I’d like to place an order</p></a>
-														</button>
+														<div class="lg:basis-1/2 lg:mt-36">
+															<p class="py-2 font-light text-3xl font-sans"><b> The 3 National Park Maps are:</b></p>
+															<ul class="text-2xl">
+																<li><b>Tsavo East & West & Chyulu Hills</b></li>
+																<li><b>Amboseli </b></li>
+																<li><b>Shimba Hills </b></li>
+															</ul>
+														</div>
 													</div>
 												</div>
+												<div class="lg:basis-1/2 z-30 mt-10 lg:ml-60">
+													<p class="p-2 font-medium text-3xl font-sans"><b>Pricing</b></p>
+													<div class="flex flex-wrap flex-row">
+														<ul class="text-sm lg:text-xl">
+															<li class="inline-block"><b class="mr-5 lg:mr-20">10 to 100 Map</b> <b> @ Ksh464/- inluding Vat</b></li>
+															<li class="inline-block"><b class="mr-5 lg:mr-20">101 to 500 Map</b> <b> @ Ksh348/- inluding Vat</b></li>
+															<li class="inline-block"><b class="mr-5 lg:mr-20">501 to 1000 Map</b> <b> @ Ksh290/- inluding Vat</b></li>
+															<li class="inline-block"><b class="mr-5 lg:mr-20">+1000 Maps</b> <b> @ Ksh232/- inluding Vat</b></li>
+														</ul>
+													</div>
+
+													<button
+														type="button"
+														class="lg:w-96 mt-10 ml-[10%] lg:ml-60 text-gray-900 bg-gradient-to-r from-red-300 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2 mb-2"
+													>
+														<a @click="triggeButton('#contact-us','beaches-map-order')" href="#contact-us"><p class="text-lg lg:text-2xl p-2 mr-5">I’d like to place an order</p></a>
+													</button>
+												</div>
 											</div>
-											<div class="lg:basis-1/2 p-4 z-30">
-												<div class="ml-0"><img src="./assets/KenyaBeaches.png" alt="background" /></div>
-											</div>
+										</div>
+										<div class="lg:basis-1/2 p-4 z-30">
+											<div class="ml-0"><img src="./assets/KenyaBeaches.png" alt="background" /></div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+
 						<!-- 2.4 diani-mara-mapPage -->
-						<div x-intersect.threshold.20="dianimarashown = true;  triggerScroll('dianimarashown','#diani-mara-map'); ">
-							<div id="diani-mara-map" :class="dianimarashown ? 'animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel h-auto relative py-12' : 'panel h-auto relative py-12' ">
-								<div class="z-20 absolute w-full h-full">
-									<img class="object-cover" src="./assets/dianamaasaibg.png" alt="background" style="width: 100%; height: 100%" />
-								</div>
-								<div>
-									<div class="flex flex-wrap flex-col-reverse lg:flex-row">
-										<div class="lg:basis-1/3 z-30 p-2">
-											<div class="ml-12"><img class="w-[80%] lg:w-[80%]" src="./assets/dianimap.jpeg" alt="background" /></div>
-										</div>
-
-										<div class="lg:basis-2/3 z-30 py-6">
-											<p class="p-2 font-medium text-3xl font-sans">The <b>Diani / Maasai Mara Map </b>is double sided with all of Diani Beach on one side and Maasai Mara on the other side</p>
-											<p class="p-2 2xl:ml-80 ml-[30%] text-3xl"><b>Pricing</b></p>
-											<div class="flex flex-grow flex-row ml-12 mb-12">
-												<ul class="text-sm md:text-xl">
-													<li class="inline-block"><b class="mr-5 lg:mr-20">10 to 100 Map</b> <b> @ Ksh464/- inluding Vat</b></li>
-													<li class="inline-block"><b class="mr-5 lg:mr-20">101 to 500 Map</b> <b> @ Ksh348/- inluding Vat</b></li>
-													<li class="inline-block"><b class="mr-5 lg:mr-20">501 to 1000 Map</b> <b> @ Ksh290/- inluding Vat</b></li>
-													<li class="inline-block"><b class="mr-5 lg:mr-20">+1000 Maps</b> <b> @ Ksh232/- inluding Vat</b></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="flex flex-col">
-										<div class="lg:basis-2/3 z-30 p-4 mt-12 lg:ml-96">
-											<button
-												type="button"
-												class="w-auto ml-11 text-gray-900 bg-gradient-to-r mb-48 from-red-300 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2"
-											>
-												<a @click="triggeButton('#contact-us','diani-mara-map-order')" href="#contact-us"><p class="text-lg lg:text-xl p-2 mr-5">I’d like to place an order</p></a>
-											</button>
-										</div>
-									</div>
-								</div>
+						<div id="diani-mara-map" class="animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel h-auto relative py-12">
+							<div class="z-20 absolute w-full h-full">
+								<img class="object-cover" src="./assets/dianamaasaibg.png" alt="background" style="width: 100%; height: 100%" />
 							</div>
-						</div>
-						<!-- 2.5 customised-branded-maps -->
-						<div x-intersect.threshold.20="custommapshown = true;  triggerScroll('custommapshown','#customised-branded-maps'); ">
-							<div id="customised-branded-maps" :class="custommapshown ? 'animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel h-auto relative':'panel h-auto relative'">
-								<div>
-									<div class="flex flex-wrap flex-col lg:flex-row">
-										<div class="lg:basis-1/2 z-30">
-											<h2 class="p-4 font-normal hidden lg:block text-4xl font-sans text-green-700"><b>Customised Branded Maps</b></h2>
-											<h2 class="p-4 block lg:hidden font-normal text-2xl font-sans text-green-700"><b>Customised Branded Maps</b></h2>
+							<div>
+								<div class="flex flex-wrap flex-col-reverse lg:flex-row">
+									<div class="lg:basis-1/3 z-30 p-2">
+										<div class="ml-12"><img class="w-[80%] lg:w-[80%]" src="./assets/dianimap.jpeg" alt="background" /></div>
+									</div>
 
-											<p class="p-12 mt-24 font-light text-3xl font-sans text-green-700">We can also create customised branded maps with your Brand in the Travel & Tourism space in Kenya and you can give them as gifts to your clients which could lead to incremental revenues</p>
+									<div class="lg:basis-2/3 z-30 py-6">
+										<p class="p-2 font-medium text-3xl font-sans">The <b>Diani / Maasai Mara Map </b>is double sided with all of Diani Beach on one side and Maasai Mara on the other side</p>
+										<p class="p-2 2xl:ml-80 ml-[30%] text-3xl"><b>Pricing</b></p>
+										<div class="flex flex-grow flex-row ml-12 mb-12">
+											<ul class="text-sm md:text-xl">
+												<li class="inline-block"><b class="mr-5 lg:mr-20">10 to 100 Map</b> <b> @ Ksh464/- inluding Vat</b></li>
+												<li class="inline-block"><b class="mr-5 lg:mr-20">101 to 500 Map</b> <b> @ Ksh348/- inluding Vat</b></li>
+												<li class="inline-block"><b class="mr-5 lg:mr-20">501 to 1000 Map</b> <b> @ Ksh290/- inluding Vat</b></li>
+												<li class="inline-block"><b class="mr-5 lg:mr-20">+1000 Maps</b> <b> @ Ksh232/- inluding Vat</b></li>
+											</ul>
 										</div>
-										<div class="lg:basis-1/2 z-30 p-2">
-											<div class="ml-[30%] lg:ml-[15%]"><img class="w-[70%] lg:w-[70%] h-[100%] rotate-90" src="./assets/brandedmaps.png" alt="background" /></div>
-										</div>
+									</div>
+								</div>
+								<div class="flex flex-col">
+									<div class="lg:basis-2/3 z-30 p-4 mt-12 lg:ml-96">
 										<button
 											type="button"
-											class="text-gray-900 ml-0 lg:ml-[35%] mb-10 bg-gradient-to-r from-red-300 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2"
+											class="w-auto ml-11 text-gray-900 bg-gradient-to-r mb-48 from-red-300 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2"
 										>
-											<a @click="triggeButton('#contact-us','customised-branded-maps-interested')" href="#contact-us"><p class="text-xl p-2 mr-8 ml-8">I am interested in this</p></a>
+											<a @click="triggeButton('#contact-us','diani-mara-map-order')" href="#contact-us"><p class="text-lg lg:text-xl p-2 mr-5">I’d like to place an order</p></a>
 										</button>
 									</div>
 								</div>
 							</div>
 						</div>
+
+						<!-- 2.5 customised-branded-maps -->
+						<div id="customised-branded-maps" class="animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel h-auto relative">
+							<div>
+								<div class="flex flex-wrap flex-col lg:flex-row">
+									<div class="lg:basis-1/2 z-30">
+										<h2 class="p-4 font-normal hidden lg:block text-4xl font-sans text-green-700"><b>Customised Branded Maps</b></h2>
+										<h2 class="p-4 block lg:hidden font-normal text-2xl font-sans text-green-700"><b>Customised Branded Maps</b></h2>
+
+										<p class="p-12 mt-24 font-light text-3xl font-sans text-green-700">We can also create customised branded maps with your Brand in the Travel & Tourism space in Kenya and you can give them as gifts to your clients which could lead to incremental revenues</p>
+									</div>
+									<div class="lg:basis-1/2 z-30 p-2">
+										<div class="ml-[30%] lg:ml-[15%]"><img class="w-[70%] lg:w-[70%] h-[100%] rotate-90" src="./assets/brandedmaps.png" alt="background" /></div>
+									</div>
+									<button
+										type="button"
+										class="text-gray-900 ml-0 lg:ml-[35%] mb-10 bg-gradient-to-r from-red-300 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2"
+									>
+										<a @click="triggeButton('#contact-us','customised-branded-maps-interested')" href="#contact-us"><p class="text-xl p-2 mr-8 ml-8">I am interested in this</p></a>
+									</button>
+								</div>
+							</div>
+						</div>
+
 						<!-- 2.6 bulk-maps-order-form -->
 						<div id="bulk-maps-order-form" class="panel h-auto w-full relative">
-							<div x-intersect.threshold.20="bulkmapsordershown = true;  triggerScroll('bulkmapsordershown','#bulk-maps-order-form')">
-								<div :class="bulkmapsordershown ? 'animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel h-auto w-full relative':'panel h-auto w-full relative'">
-									<div class="w-full">
-										<div class="flex relative flex-wrap lg:flex-row flex-col-reverse z-20 bg-white py-6">
-											<div class="lg:basis-1/3">
-												<h2 class="lg:ml-2 p-4 hidden lg:block font-normal text-4xl font-sans text-green-700"><b>Bulk Maps Order Form</b></h2>
-												<a target="_blank" href="./assets/A3D Bulk Map Purchase Form 2024.pdf" download>
-													<button
-														type="button"
-														class="lg:mt-40 mt-10 lg:ml-10 text-gray-900 bg-gradient-to-r from-red-300 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2"
-													>
-														<p class="text-xl p-2 mr-8 ml-8">Download Order Form</p>
-													</button>
-												</a>
-											</div>
-											<div class="lg:basis-2/3 h-auto">
-												<h2 class="lg:ml-2 p-4 block lg:hidden font-normal text-2xl font-sans text-green-700"><b>Bulk Maps Order Form</b></h2>
-												<!-- <img class="relative ml-20 p-4 top-0 w-[80%] lg:w-[50%]" src="./assets/bulkmap1.PNG" alt="background" /> -->
+							<div class="animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel h-auto w-full relative">
+								<div class="w-full">
+									<div class="flex relative flex-wrap lg:flex-row flex-col-reverse z-20 bg-white py-6">
+										<div class="lg:basis-1/3">
+											<h2 class="lg:ml-2 p-4 hidden lg:block font-normal text-4xl font-sans text-green-700"><b>Bulk Maps Order Form</b></h2>
+											<a target="_blank" href="./assets/A3D Bulk Map Purchase Form 2024.pdf" download>
+												<button
+													type="button"
+													class="lg:mt-40 mt-10 lg:ml-10 text-gray-900 bg-gradient-to-r from-red-300 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2"
+												>
+													<p class="text-xl p-2 mr-8 ml-8">Download Order Form</p>
+												</button>
+											</a>
+										</div>
+										<div class="lg:basis-2/3 h-auto">
+											<h2 class="lg:ml-2 p-4 block lg:hidden font-normal text-2xl font-sans text-green-700"><b>Bulk Maps Order Form</b></h2>
+											<!-- <img class="relative ml-20 p-4 top-0 w-[80%] lg:w-[50%]" src="./assets/bulkmap1.PNG" alt="background" /> -->
 
-												<img class="lg:ml-2 mt-6 lg:mt-0" src="./assets/bulkmap1.PNG" alt="brandedmaps" class="relative ml-20 p-4 top-0" />
-											</div>
+											<img class="lg:ml-2 mt-6 lg:mt-0" src="./assets/bulkmap1.PNG" alt="brandedmaps" class="relative ml-20 p-4 top-0" />
 										</div>
 									</div>
 								</div>
@@ -555,30 +469,28 @@
 
 						<!-- 2.7 ad-booking-form-page-1 -->
 						<div id="ad-booking-form-page-1" class="panel h-auto w-full relative">
-							<div x-intersect.threshold.20="adbooking1shown = true;triggerScroll('adbooking1shown','#ad-booking-form-page-1');">
-								<div :class="adbooking1shown ?'animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel h-auto w-full relative':'panel h-auto w-full relative'">
-									<div class="w-full">
-										<div class="flex relative flex-wrap lg:flex-row flex-col-reverse z-20 py-6">
-											<div class="lg:basis-1/3">
-												<h2 class="lg:ml-2 p-4 hidden lg:block font-normal text-2xl font-sans text-green-700"><b>Advert Booking Form Page 1</b></h2>
-												<p class="hidden lg:block p-4 mt-2 font-light text-4xl font-sans text-green-700">We are also able to place your Ads in each of the 3 Maps with Single or Double Block Ads as well the Back Cover Advert</p>
-												<a target="_blank" href="./assets/A3D Advert Booking Form 2024.pdf" download>
-													<button
-														type="button"
-														class="lg:mt-40 mt-10 lg:ml-10 text-gray-900 bg-gradient-to-r from-red-300 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2"
-													>
-														<p class="text-base p-2 mr-8 ml-8">Download Advert Booking Form</p>
-													</button>
-												</a>
-											</div>
-											<div class="lg:basis-2/3 h-auto">
-												<h2 class="lg:ml-2 p-4 md:block lg:hidden font-normal text-2xl font-sans text-green-700"><b>Advert Booking Form Page 1</b></h2>
-												<p class="block lg:hidden p-12 mt-24 font-light text-2xl font-sans text-green-700">We are also able to place your Ads in each of the 3 Maps with Single or Double Block Ads as well the Back Cover Advert</p>
+							<div class="animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel h-auto w-full relative">
+								<div class="w-full">
+									<div class="flex relative flex-wrap lg:flex-row flex-col-reverse z-20 py-6">
+										<div class="lg:basis-1/3">
+											<h2 class="lg:ml-2 p-4 hidden lg:block font-normal text-2xl font-sans text-green-700"><b>Advert Booking Form Page 1</b></h2>
+											<p class="hidden lg:block p-4 mt-2 font-light text-4xl font-sans text-green-700">We are also able to place your Ads in each of the 3 Maps with Single or Double Block Ads as well the Back Cover Advert</p>
+											<a target="_blank" href="./assets/A3D Advert Booking Form 2024.pdf" download>
+												<button
+													type="button"
+													class="lg:mt-40 mt-10 lg:ml-10 text-gray-900 bg-gradient-to-r from-red-300 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2"
+												>
+													<p class="text-base p-2 mr-8 ml-8">Download Advert Booking Form</p>
+												</button>
+											</a>
+										</div>
+										<div class="lg:basis-2/3 h-auto">
+											<h2 class="lg:ml-2 p-4 md:block lg:hidden font-normal text-2xl font-sans text-green-700"><b>Advert Booking Form Page 1</b></h2>
+											<p class="block lg:hidden p-12 mt-24 font-light text-2xl font-sans text-green-700">We are also able to place your Ads in each of the 3 Maps with Single or Double Block Ads as well the Back Cover Advert</p>
 
-												<!-- <img class="relative ml-20 p-4 top-0 w-[80%] lg:w-[50%]" src="./assets/bulkmap1.PNG" alt="background" /> -->
+											<!-- <img class="relative ml-20 p-4 top-0 w-[80%] lg:w-[50%]" src="./assets/bulkmap1.PNG" alt="background" /> -->
 
-												<img class="lg:ml-2 mt-6 lg:mt-0" src="./assets/bulkmap2.PNG" alt="brandedmaps" class="relative ml-20 p-4 top-0" />
-											</div>
+											<img class="lg:ml-2 mt-6 lg:mt-0" src="./assets/bulkmap2.PNG" alt="brandedmaps" class="relative ml-20 p-4 top-0" />
 										</div>
 									</div>
 								</div>
@@ -586,65 +498,61 @@
 						</div>
 						<!-- 2.8 ad-booking-form-page-2 -->
 						<div id="ad-booking-form-page-2" class="panel h-auto w-full relative">
-							<div x-intersect.threshold.20="adbooking2shown = true; triggerScroll('adbooking2shown','#ad-booking-form-page-2');">
-								<div id="ad-booking-form-page-2" :class="adbooking2shown ?'animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel h-auto w-full relative':'panel h-auto w-full relative'">
-									<div class="w-full">
-										<div class="flex relative flex-wrap lg:flex-row flex-col-reverse z-20 bg-white py-6">
-											<div class="lg:basis-1/3">
-												<h2 class="lg:ml-2 p-4 hidden lg:block font-normal text-4xl font-sans text-green-700"><b>Advert Booking Form Page 2 </b></h2>
-												<a target="_blank" href="./assets/A3D Advert Booking Form 2024.pdf" download>
-													<button
-														type="button"
-														class="lg:mt-40 mt-10 lg:ml-10 text-gray-900 bg-gradient-to-r from-red-300 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2"
-													>
-														<p class="text-base p-2 mr-8 ml-8">Download Advert Booking Form</p>
-													</button>
-												</a>
-											</div>
-											<div class="lg:basis-2/3 h-auto">
-												<h2 class="lg:ml-2 p-4 block lg:hidden font-normal text-2xl font-sans text-green-700"><b>Advert Booking Form Page 2 </b></h2>
-												<!-- <img class="relative ml-20 p-4 top-0 w-[80%] lg:w-[50%]" src="./assets/bulkmap1.PNG" alt="background" /> -->
+							<div id="ad-booking-form-page-2" class="animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel h-auto w-full relative">
+								<div class="w-full">
+									<div class="flex relative flex-wrap lg:flex-row flex-col-reverse z-20 bg-white py-6">
+										<div class="lg:basis-1/3">
+											<h2 class="lg:ml-2 p-4 hidden lg:block font-normal text-4xl font-sans text-green-700"><b>Advert Booking Form Page 2 </b></h2>
+											<a target="_blank" href="./assets/A3D Advert Booking Form 2024.pdf" download>
+												<button
+													type="button"
+													class="lg:mt-40 mt-10 lg:ml-10 text-gray-900 bg-gradient-to-r from-red-300 via-red-400 to-yellow-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-3xl text-sm px-5 py-2.5 text-center me-2"
+												>
+													<p class="text-base p-2 mr-8 ml-8">Download Advert Booking Form</p>
+												</button>
+											</a>
+										</div>
+										<div class="lg:basis-2/3 h-auto">
+											<h2 class="lg:ml-2 p-4 block lg:hidden font-normal text-2xl font-sans text-green-700"><b>Advert Booking Form Page 2 </b></h2>
+											<!-- <img class="relative ml-20 p-4 top-0 w-[80%] lg:w-[50%]" src="./assets/bulkmap1.PNG" alt="background" /> -->
 
-												<img class="lg:ml-2 mt-6 lg:mt-0" src="./assets/advertform.PNG" alt="brandedmaps" class="relative ml-20 p-4 top-0" />
-											</div>
+											<img class="lg:ml-2 mt-6 lg:mt-0" src="./assets/advertform.PNG" alt="brandedmaps" class="relative ml-20 p-4 top-0" />
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<!-- 2.9 contact-us -->
-						<div x-intersect.threshold.20="contactusshown= true; triggerScroll('contactusshown','#contact-us');">
-							<div id="contact-us" :class="contactusshown ? 'animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel h-auto w-full relative':'panel h-auto w-full relative'">
-								<div class="flex relative flex-wrap flex-row lg:flex-col z-30 text-black font-sans">
-									<div class="lg:basis-1/3">
-										<h2 class="p-14 lg:ml-[35%] font-medium text-5xl"><b>Contact Us</b></h2>
-									</div>
-									<div class="lg:basis-2/3">
-										<div class="flex relative flex-wrap flex-row sm:flex-row z-30">
-											<div class="lg:basis-3/5">
-												<ul class="text-xl pl-16">
-													<li class="mb-2">
-														<div class="inline-flex">
-															<span class="inline-flex"><img src="./assets/email-icon.svg" alt="email" class="w-20 h-20" /> </span> <b class="p-4 font-light font-sans text-xl lg:text-3xl">sales@africa3dmaps.com</b>
-														</div>
-													</li>
-													<li>
-														<div class="inline-flex">
-															<span class="inline-flex"><img src="./assets/phone-icon.png" alt="email" class="w-20 h-20" /> </span> <b class="p-4 font-light font-sans text-xl lg:text-3xl"> +254 702 090 169</b>
-														</div>
-													</li>
-												</ul>
+						<div id="contact-us" class="animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel h-auto w-full relative">
+							<div class="flex relative flex-wrap flex-row lg:flex-col z-30 text-black font-sans">
+								<div class="lg:basis-1/3">
+									<h2 class="p-14 lg:ml-[35%] font-medium text-5xl"><b>Contact Us</b></h2>
+								</div>
+								<div class="lg:basis-2/3">
+									<div class="flex relative flex-wrap flex-row sm:flex-row z-30">
+										<div class="lg:basis-3/5">
+											<ul class="text-xl pl-16">
+												<li class="mb-2">
+													<div class="inline-flex animate-fade-left animate-once animate-duration-[1000ms] animate-delay-[1000ms] animate-ease-in animate-normal animate-fill-both">
+														<span class="inline-flex"><img src="./assets/email-icon.svg" alt="email" class="w-20 h-20" /> </span> <b class="p-4 font-light font-sans text-xl lg:text-3xl">sales@africa3dmaps.com</b>
+													</div>
+												</li>
+												<li>
+													<div class="inline-flex animate-fade-left animate-once animate-duration-[1000ms] animate-delay-[1000ms] animate-ease-in animate-normal animate-fill-both">
+														<span class="inline-flex"><img src="./assets/phone-icon.png" alt="email" class="w-20 h-20" /> </span> <b class="p-4 font-light font-sans text-xl lg:text-3xl"> +254 702 090 169</b>
+													</div>
+												</li>
+											</ul>
 
-												<h2 class="p-14 font-light text-4xl"><b>Locations</b></h2>
-												<img src="./assets/locations.png" class="pl-16 w-60 h-24" alt="background" />
-												<ul class="text-2xl pl-16">
-													<li class="p-4">Nyali, Mombasa</li>
-													<li class="p-4">Diani, Ukunda</li>
-													<li class="p-4">Gigiri, Nairobi</li>
-												</ul>
-											</div>
-											<div class="lg:basis-2/5"><img src="./assets/contactkenya.png" alt="brandedmaps" class="pr-20 z-20" /></div>
+											<h2 class="p-14 font-light text-4xl"><b>Locations</b></h2>
+											<img src="./assets/locations.png" class="pl-16 w-60 h-24" alt="background" />
+											<ul class="text-2xl pl-16">
+												<li class="p-4">Nyali, Mombasa</li>
+												<li class="p-4">Diani, Ukunda</li>
+												<li class="p-4">Gigiri, Nairobi</li>
+											</ul>
 										</div>
+										<div class="lg:basis-2/5"><img src="./assets/contactkenya.png" alt="brandedmaps" class="pr-20 z-20" /></div>
 									</div>
 								</div>
 							</div>

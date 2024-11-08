@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+	@keyframes kenburnsright {
+		0% {
+			transform: scale(0.5) translate(0, 0);
+			transform-origin: 84% 50%;
+		}
+		100% {
+			transform: scale(1) translateX(0px);
+			transform-origin: right;
+		}
+	}
+	.kenburnsright {
+		animation: kenburnsright 5s ease-out both;
+	}
+	@keyframes kenburnsbottom {
+		0% {
+			transform: scale(0.5) translateY(0);
+			transform-origin: 50% 84%;
+		}
+		100% {
+			transform: scale(1) translateY(15px);
+			transform-origin: bottom;
+		}
+	}
+	.kenburnsbottom {
+		animation: kenburnsbottom 5s ease-out both;
+	}
+}

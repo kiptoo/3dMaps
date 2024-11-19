@@ -66,7 +66,7 @@
 		<div
 			x-cloak
 			class="w-full flex flex-wrap h-svh max-h-svh bg-gradient-to-br from-teal-200 via-zinc-200 to-stone-300"
-			x-data="{ open: false,triggerfromNav:false,contactOpen: false,sendSuccess: false,sendingEmail: false,concerning :'General Enquiry',useForm:{name:'',phone:'',email:'',message:'',concerning:''},homeshown:false, safarishown:false,contactusshown:false,adbooking1shown:false,adbooking2shown:false,bulkmapsordershown:false,beachshown:false,dianimarashown:false,custommapshown:false, toggle() { 
+			x-data="{ open: false,triggerfromNav:false,contactOpen: false,sendSuccess: false,sendingEmail: false,concerning :'General Enquiry',useForm:{name:'',phone:'',email:'',message:'',concerning:'',ticketNumber:''},homeshown:false, safarishown:false,contactusshown:false,adbooking1shown:false,adbooking2shown:false,bulkmapsordershown:false,beachshown:false,dianimarashown:false,custommapshown:false, toggle() { 
         this.open = ! this.open 
      
        },
@@ -169,10 +169,18 @@
             // code block
         }
       },
+      ticketNumberGenerator(){
+        const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+        const randomLetter = Math.floor(Math.random() * letters.length);
+        const numbers = Math.floor(Math.random() * 100000);
+    
+        return letters[randomLetter].toUpperCase() + numbers;
+        },
       submitEmail(body){
        
         body.concerning=this.concerning
-       // console.log(body)
+        body.ticketNumber=this.ticketNumberGenerator()
+       console.log(body)
         this.sendingEmail=true
         emailjs.send('service_ghindwq', 'template_1c7ab2b',body,{}).then(
             (response) => {
@@ -701,7 +709,7 @@
 												<div class="text-center">
 													<h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">Message sent!</h3>
 													<p class="text-gray-600 my-2">Thank you for Contacting us.</p>
-													<p>we will get back tou you within 24hrs</p>
+													<p>we will get back tou you within 48hrs</p>
 												</div>
 											</div>
 										</div>

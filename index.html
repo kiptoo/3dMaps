@@ -34,7 +34,7 @@
 		<script type="text/javascript">
 			(function () {
 				emailjs.init({
-					publicKey: "6_tNcp-iBTQ09T2Ql",
+					publicKey: "OgiE6pstAdeK5tJzB",
 					limitRate: {
 						// Set the limit rate for the application
 						id: "app",
@@ -174,7 +174,7 @@
         body.concerning=this.concerning
        // console.log(body)
         this.sendingEmail=true
-        emailjs.send('service_7fq6611', 'template_5uolzq6',body,{}).then(
+        emailjs.send('service_ghindwq', 'template_1c7ab2b',body,{}).then(
             (response) => {
               this.sendingEmail=false
              // console.log('SUCCESS!', response.status, response.text);
@@ -399,7 +399,7 @@
 						<div x-intersect.threshold.20="beachshown = true; triggerScroll('beachshown','#beaches-map'); ">
 							<div :class="beachshown ? 'animate-fade-up animate-once animate-duration-[500ms] animate-delay-[500ms] animate-ease-in animate-normal animate-fill-both panel flex flex-col flex-wrap relative' : 'panel flex flex-col flex-wrap relative'" id="beaches-map">
 								<div class="z-20 absolute w-full h-full">
-									<img class="object-cover " src="./assets/beachbg.png" alt="background" style="width: 100%; height: 100%" />
+									<img class="object-cover" src="./assets/beachbg.png" alt="background" style="width: 100%; height: 100%" />
 								</div>
 								<div class="flex flex-wrap flex-col z-20">
 									<div class="z-20 absolute w-full h-full">
